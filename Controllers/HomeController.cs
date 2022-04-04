@@ -1,5 +1,6 @@
 ﻿using CrashySmashy.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -26,8 +27,9 @@ namespace CrashySmashy.Controllers
         public IActionResult SeeTable()
         {
             var application = _appContext.Crashes
-                //.Include(x => x.AppId)
-                .OrderBy(x => x.City)
+                //.Include(x => x.FIELD1)
+                .OrderBy(x => x.CITY)
+                //.Take(10)
                 .ToList();
 
             return View(application);

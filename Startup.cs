@@ -28,7 +28,9 @@ namespace CrashySmashy
             services.AddControllersWithViews();
             services.AddDbContext<CrashesContext>(options =>
             {
-                options.UseSqlite(Configuration["ConnectionStrings:MyConnection"]);
+                //options.UseSqlite(Configuration["ConnectionStrings:MyConnection"]);
+                options.UseMySql(Configuration["ConnectionStrings:MyConnection"]);
+
             });
         }
 

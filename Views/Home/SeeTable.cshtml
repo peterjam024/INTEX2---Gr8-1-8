@@ -1,6 +1,62 @@
 ﻿@{
     ViewData["Title"] = "See data";
 }
+@model List<Crash>
+
+
 <h1>@ViewData["Title"]</h1>
 
 <p>Here's the data folks</p>
+
+
+<br />
+
+<div class="row">
+
+    @*This is for the UPCOMING appointments table*@
+    <div class="col center">
+        <h4 class="quadrant">Upcoming</h4>
+        <br />
+        <table class="table table-bordered table-striped">
+            <thead class="font-weight-bold">
+                <tr>
+                    @*<td>FIELD ID</td>*@
+                    <td>CRASH ID</td>
+                    <td>City</td>
+                    <td>County Name</td>
+                    
+                    <td></td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model)
+                {
+                   
+                    {
+                        <tr>
+                            @*<td>@x.FIELD1</td>*@
+                            <td>@x.CRASH_ID</td>
+                            <td>@x.CITY</td>
+                            <td>@x.COUNTY_NAME</td>
+                            <td>Edit</td>
+                            <td>Delete</td>
+                            @*<td class="text-center">
+                                <form method="get" asp-action="Edit">
+                                    <input type="hidden" name="appid" value="@x.AppId" />
+                                    <button type="submit" class="btn btn-sm ">Edit</button>
+                                </form>
+                            </td>
+                            <td class="text-center">
+                                <form method="post" asp-action="Delete">
+                                    <input type="hidden" name="appid" value="@x.AppId" />
+                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                </form>
+                            </td>*@
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
