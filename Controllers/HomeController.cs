@@ -27,9 +27,9 @@ namespace CrashySmashy.Controllers
         public IActionResult SeeTable()
         {
             var application = _appContext.Crashes
-                //.Include(x => x.FIELD1)
-                .OrderBy(x => x.CITY)
-                //.Take(10)
+                
+                
+                .Take(10)
                 .ToList();
 
             return View(application);
