@@ -11,11 +11,11 @@ namespace CrashySmashy.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        //constructor
+        private CrashesContext _appContext { get; set; }
+        public HomeController(CrashesContext crashesContext)
         {
-            _logger = logger;
+            _appContext = crashesContext;
         }
 
         public IActionResult Index()
@@ -23,15 +23,16 @@ namespace CrashySmashy.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult SeeTable()
         {
-            return View();
+            var application = _appContext.Crashes
+                //.Include(x => x.AppId)
+                .OrderBy(x => x.City)
+                .ToList();
+
+            return View(application);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        
     }
 }
