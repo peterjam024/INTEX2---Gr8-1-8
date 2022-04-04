@@ -34,7 +34,48 @@ namespace CrashySmashy.Controllers
 
             return View(crashes);
         }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View(new Crash());
+        }
 
+        [HttpPost]
+        public IActionResult Create(Crash crash)
+        {
+            if (ModelState.IsValid)
+            {
+                _appContext.Crashes.Add(crash);
+                _appContext.SaveChanges();
+                return RedirectToAction("SeeTable");
+            }
+            return View("Create");
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int crashid)
+        {
+            Crash crash = _appContext.Crashes.Single(x => x.CRASH_ID == crashid);
+            return View("Create", crash);
+
+        }
+        [HttpPost]
+        public IActionResult Edit(Crash crash)
+        {
+            _appContext.Update(crash);
+            _appContext.SaveChanges();
+            return RedirectToAction("SeeTable");
+        }
         
+        public IActionResult Delete(int crashid)
+        {
+            Crash crash = _appContext.Crashes.Single(x => x.CRASH_ID == crashid);
+            _appContext.Remove(crash);
+            _appContext.SaveChanges();
+            return RedirectToAction("SeeTable");
+        }
+
     }
+
+
 }
