@@ -26,13 +26,13 @@ namespace CrashySmashy.Controllers
 
         public IActionResult SeeTable()
         {
-            var application = _appContext.Crashes
+            var crashes = _appContext.Crashes
                 
                 
                 .Take(10)
                 .ToList();
 
-            return View(application);
+            return View(crashes);
         }
 
         

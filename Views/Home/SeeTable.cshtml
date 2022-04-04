@@ -39,20 +39,18 @@
                             <td>@x.CRASH_ID</td>
                             <td>@x.CITY</td>
                             <td>@x.COUNTY_NAME</td>
-                            <td>Edit</td>
-                            <td>Delete</td>
-                            @*<td class="text-center">
+                            <td class="text-center">
                                 <form method="get" asp-action="Edit">
-                                    <input type="hidden" name="appid" value="@x.AppId" />
-                                    <button type="submit" class="btn btn-sm ">Edit</button>
+                                    <input type="hidden" name="appid" value="@x.CRASH_ID" />
+                                    <button type="submit" class="btn btn-sm btn-warning">Edit</button>
                                 </form>
                             </td>
                             <td class="text-center">
                                 <form method="post" asp-action="Delete">
-                                    <input type="hidden" name="appid" value="@x.AppId" />
+                                    <input type="hidden" name="appid" value="@x.CRASH_ID" />
                                     <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                 </form>
-                            </td>*@
+                            </td>
                         </tr>
                     }
                 }
