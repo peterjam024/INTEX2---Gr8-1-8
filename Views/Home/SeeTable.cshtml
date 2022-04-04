@@ -41,13 +41,13 @@
                             <td>@x.COUNTY_NAME</td>
                             <td class="text-center">
                                 <form method="get" asp-action="Edit">
-                                    <input type="hidden" name="appid" value="@x.CRASH_ID" />
+                                    <input type="hidden" name="crashid" value="@x.CRASH_ID" />
                                     <button type="submit" class="btn btn-sm btn-warning">Edit</button>
                                 </form>
                             </td>
                             <td class="text-center">
                                 <form method="post" asp-action="Delete">
-                                    <input type="hidden" name="appid" value="@x.CRASH_ID" />
+                                    <input type="hidden" name="crashid" value="@x.CRASH_ID" />
                                     <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                 </form>
                             </td>
