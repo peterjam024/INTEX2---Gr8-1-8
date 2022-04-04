@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Create";
+
+}
+@model Crash
+<h1>Please fill out your information here!</h1>
+
+<div>
+    <form>
+        <div class="accordion" id="accordionExample">
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            General Information
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div asp-validation-summary="All"></div>
+                        <input type="hidden" asp-for="CRASH_ID" />
+                        <br />
+
+                        <label asp-for="CRASH_DATETIME">Crash Date:</label>
+                        <input type="datetime" />
+                        <br />
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Location Information
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <label asp-for="MAIN_ROAD_NAME">Street:</label>
+                        <input asp-for="MAIN_ROAD_NAME" />
+                        <br />
+
+
+                        <label asp-for="CITY">City:</label>
+                        <select asp-for="CITY">
+                            <option value="SALT LAKE">salt lake</option>
+                            <option value="SALT LAKE">testing</option>
+                            <option value="SALT LAKE">testing 2</option>
+                        </select>
+                        <br />
+
+                        <label asp-for="COUNTY_NAME">County</label>
+                        <select asp-for="COUNTY_NAME">
+                            <option value="SALT LAKE">salt lake</option>
+                            <option value="SALT LAKE">testing</option>
+                            <option value="SALT LAKE">testing 2</option>
+                        </select>
+                        <br />
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="card">
+                <div class="card-header" id="headingThree">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Collapsible Group Item #3
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+</div>
