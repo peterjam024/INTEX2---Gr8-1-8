@@ -3,6 +3,7 @@
 
 }
 @model Crash
+<<<<<<< Updated upstream
 <h1>Please fill out your information here!</h1>
 
 <div>
@@ -58,8 +59,8 @@
                             <div class="form-group col-md-4">
                                 <div>
                                     <label asp-for="MAIN_ROAD_NAME">Street:</label>
-                                    <input  class="form-control" asp-for="MAIN_ROAD_NAME" />
-                                </div> 
+                                    <input class="form-control" asp-for="MAIN_ROAD_NAME" />
+                                </div>
                             </div>
                         </div>
 
@@ -86,36 +87,162 @@
                                         <option>@county</option>
                                     }
                                 </select>
+
+
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Additional Information
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <label asp-for="WORK_ZONE_RELATED">In a work zone:</label>
+                            <div class="form-check">
+                                @Html.RadioButtonFor(model => model.WORK_ZONE_RELATED, true) Yes
+                            </div>
+                            <div class="form-check">
+                                @Html.RadioButtonFor(model => model.WORK_ZONE_RELATED, false) No
+                            </div>
+                            <br />
+
+                            <label asp-for="PEDESTRIAN_INVOLVED">Pedestrian Involved:</label>
+                            
+
+                            <label asp-for="BICYCLIST_INVOLVED">Bicyclist Involved:</label>
+                            <select asp-for="BICYCLIST_INVOLVED">
+                                <option value="true">True</option>
+                                <option value="False">False</option>
+                            </select>
+                            <br />
+
+                            <label asp-for="MOTORCYCLE_INVOLVED">Motorcycle Involved:</label>
+                            <select asp-for="MOTORCYCLE_INVOLVED">
+                                <option value="True">True</option>
+                                <option value="False">False</option>
+                            </select>
+                            <br />
+
+                            <label asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED">Commercial Vehicle Involved:</label>
+                            <select asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED">
+                                <option value="True">True</option>
+                                <option value="False">False</option>
+                            </select>
+                            <br />
+
+                            <label asp-for="IMPROPER_RESTRAINT">Improper Restraint:</label>
+                            <select asp-for="IMPROPER_RESTRAINT">
+                                <option value="True">True</option>
+                                <option value="False">False</option>
+                            </select>
+                            <br />
+
+                            <label asp-for="UNRESTRAINED">Unrestrained:</label>
+                            <select asp-for="UNRESTRAINED">
+                                <option value="True">True</option>
+                                <option value="False">False</option>
+                            </select>
+                            <br />
+
+                            <label asp-for="DUI">DUI:</label>
+                            <select asp-for="DUI">
+                                <option value="True">True</option>
+                                <option value="False">False</option>
+                            </select>
+                            <br />
+
+                            <label asp-for="INTERSECTION_RELATED">Intersection:</label>
+                            <select asp-for="INTERSECTION_RELATED">
+                                <option value="True">True</option>
+                                <option value="False">False</option>
+                            </select>
+                            <br />
+
+                            <label asp-for="WILD_ANIMAL_RELATED">Wild Animal Related:</label>
+                            <select asp-for="WILD_ANIMAL_RELATED">
+                                <option value="True">True</option>
+                                <option value="False">False</option>
+                            </select>
+                            <br />
+
+                            <label asp-for="DOMESTIC_ANIMAL_RELATED">Domestic Animal Related:</label>
+                            <select asp-for="DOMESTIC_ANIMAL_RELATED">
+                                <option value="1">True</option>
+                                <option value="0">False</option>
+                            </select>
+                            <br />
+
+                            <label asp-for="OVERTURN_ROLLOVER">Vehicle Rollover:</label>
+                            <select asp-for="OVERTURN_ROLLOVER">
+                                <option value="1">True</option>
+                                <option value="0">False</option>
+                            </select>
+                            <br />
+
+                            <label asp-for="TEENAGE_DRIVER_INVOLVED">Teenage Driver Involved:</label>
+                            <select asp-for="TEENAGE_DRIVER_INVOLVED">
+                                <option value="1">True</option>
+                                <option value="0">False</option>
+                            </select>
+                            <br />
+
+                            <label asp-for="OLDER_DRIVER_INVOLVED">Older Driver Involved:</label>
+                            <select asp-for="OLDER_DRIVER_INVOLVED">
+                                <option value="1">True</option>
+                                <option value="0">False</option>
+                            </select>
+                            <br />
+
+                            <label asp-for="NIGHT_DARK_CONDITION">Dark Conditions:</label>
+                            <select asp-for="NIGHT_DARK_CONDITION">
+                                <option value="1">True</option>
+                                <option value="0">False</option>
+                            </select>
+                            <br />
+
+                            <label asp-for="SINGLE_VEHICLE">Single Vehicle:</label>
+                            <select asp-for="SINGLE_VEHICLE">
+                                <option value="1">True</option>
+                                <option value="0">False</option>
+                            </select>
+                            <br />
+
+                            <label asp-for="DISTRACTED_DRIVING">Distracted Driving:</label>
+                            <select asp-for="DISTRACTED_DRIVING">
+                                <option value="1">True</option>
+                                <option value="0">False</option>
+                            </select>
+                            <br />
+
+                            <label asp-for="DROWSY_DRIVING">Drowsy Driving:</label>
+                            <select asp-for="DROWSY_DRIVING">
+                                <option value="1">True</option>
+                                <option value="0">False</option>
+                            </select>
+                            <br />
+
+                            <label asp-for="ROADWAY_DEPARTURE">Left the Road:</label>
+                            <select asp-for="ROADWAY_DEPARTURE">
+                                <option value="1">True</option>
+                                <option value="0">False</option>
+                            </select>
+                            <br />
                         </div>
                     </div>
                 </div>
             </div>
 
-
-
-            <div class="card">
-                <div class="card-header" id="headingThree">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Additional Information
-                        </button>
-                    </h5>
-                </div>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                    <div class="card-body">
-                        <label asp-for="COUNTY_NAME">County</label>
-                        <select asp-for="COUNTY_NAME">
-                            <option value="0">salt lake</option>
-                            <option value="SALT LAKE">testing</option>
-                            <option value="SALT LAKE">testing 2</option>
-                        </select>
-                        <br />
-                    </div>
-                </div>
-            </div>
         </div>
 
+        <br />
         <button class="btn btn-success" type="submit">Submit</button>
     </form>
-</div>
+    </div>
