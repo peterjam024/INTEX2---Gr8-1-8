@@ -7,6 +7,25 @@
 
 <div>
     <form>
+
+        <div asp-validation-summary="All"></div>
+        <input type="hidden" asp-for="CRASH_ID" />
+        <br />
+
+        <label asp-for="CRASH_DATETIME">Crash Date:</label>
+        <input type="datetime-local" />
+        <br />
+
+        <label asp-for="CRASH_SEVERITY_ID">Crash Severity:</label>
+        <select asp-for="CRASH_SEVERITY_ID">
+            <option value="1">No Injury</option>
+            <option value="2">Possible Injury</option>
+            <option value="3">Suspected Minor Injury</option>
+            <option value="4">Suspected Serious Injury</option>
+            <option value="5">Fatal</option>
+
+        </select>
+        <br />
         <div class="accordion" id="accordionExample">
             <div class="card">
                 <div class="card-header" id="headingTwo">
@@ -18,13 +37,7 @@
                 </div>
                 <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body">
-                        <div asp-validation-summary="All"></div>
-                        <input type="hidden" asp-for="CRASH_ID" />
-                        <br />
 
-                        <label asp-for="CRASH_DATETIME">Crash Date:</label>
-                        <input type="datetime" />
-                        <br />
                     </div>
                 </div>
             </div>
@@ -71,18 +84,24 @@
                 <div class="card-header" id="headingThree">
                     <h5 class="mb-0">
                         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Collapsible Group Item #3
+                            Additional Information
                         </button>
                     </h5>
                 </div>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                     <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        <label asp-for="COUNTY_NAME">County</label>
+                        <select asp-for="COUNTY_NAME">
+                            <option value="0">salt lake</option>
+                            <option value="SALT LAKE">testing</option>
+                            <option value="SALT LAKE">testing 2</option>
+                        </select>
+                        <br />
                     </div>
                 </div>
             </div>
         </div>
 
-
+        <button class="btn btn-success" type="submit">Submit</button>
     </form>
 </div>
