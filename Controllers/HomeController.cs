@@ -32,10 +32,8 @@ namespace CrashySmashy.Controllers
         public IActionResult SeeTable()
         {
             var crashes = _appContext.Crashes
-<<<<<<< Updated upstream
+
                 .OrderByDescending(x => x.CRASH_ID)
-=======
->>>>>>> Stashed changes
                 .Take(10)
                 .ToList();
 
