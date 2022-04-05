@@ -1,10 +1,14 @@
-﻿@{
-    ViewData["Title"] = "See data";
+﻿@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+@{
+    ViewData["Title"] = "Admin";
 }
+
 @model List<Crash>
 
 
-<h1>Crash Data</h1>
+<h1>Admin View Data</h1>
 
 <br />
 <div class="d-flex justify-content-around">
@@ -18,18 +22,21 @@
 </div>
 <br />
 
-        
+
 <table class="table table-bordered table-striped text-center">
-<thead class="font-weight-bold">
-    <tr class="text-center">
-        
-        <td>CRASH ID</td>
-        <td>Street Name</td>
-        <td>City</td>
-        <td>County Name</td>
-        <td>Severity (1-5)</td>
-        <td></td>
-        @*<td>Working Zone</td>
+    <thead class="font-weight-bold">
+        <tr class="text-center">
+
+            <td>CRASH ID</td>
+            <td>Street Name</td>
+            <td>City</td>
+            <td>County Name</td>
+            <td>Severity (1-5)</td>
+            <td></td>
+            <td></td>
+            <td></td>
+
+            @*<td>Working Zone</td>
         <td>Pedestrian Involved</td>
         <td>Bicyclist Involved</td>
         <td>Motorcycle Involved</td>
@@ -48,55 +55,54 @@
         <td>Distracted Driving</td>
         <td>Drowsy Driving</td>
         <td>Roadway Departure</td>*@
-    </tr>
-</thead>
-<tbody>
-    @foreach (var x in Model)
-    {
-    <tr>
-        @*<td class="text-center">
-            <form method="get" asp-action="Edit">
-                <input type="hidden" name="crashid" value="@x.CRASH_ID" />
-                <button type="submit" class="btn btn-sm btn-warning">Edit</button>
-            </form>
-        </td>
-        <td class="text-center">
-            <form method="post" asp-action="Delete">
-                <input type="hidden" name="crashid" value="@x.CRASH_ID" />
-                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-            </form>
-        </td>*@
-
-        <td>@x.CRASH_ID</td>
-        <td>@x.MAIN_ROAD_NAME</td>
-        <td>@x.CITY</td>
-        <td>@x.COUNTY_NAME</td>
-        @if (x.CRASH_SEVERITY_ID == 1)
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
         {
-            <td>No Injury</td>
-        }
-        @if (x.CRASH_SEVERITY_ID == 2)
-        {
-        <td>Possible Injury</td>
-        }
-        @if (x.CRASH_SEVERITY_ID == 3)
-        {
-            <td>Suspected Minor Injury</td>
-        }
-        @if (x.CRASH_SEVERITY_ID == 4)
-        {
-            <td>Suspected Serious Injury</td>
-        }
-        @if (x.CRASH_SEVERITY_ID == 5)
-        {
-            <td>Fatal (yeeeeet)</td>
-        }
-        @*@if (x.CRASH_SEVERITY_ID != 1 && x.CRASH_SEVERITY_ID != 2 && x.CRASH_SEVERITY_ID != 3 && x.CRASH_SEVERITY_ID != 4 && x.CRASH_SEVERITY_ID != 5)
+        <tr>
+            <td>@x.CRASH_ID</td>
+            <td>@x.MAIN_ROAD_NAME</td>
+            <td>@x.CITY</td>
+            <td>@x.COUNTY_NAME</td>
+            @if (x.CRASH_SEVERITY_ID == 1)
+            {
+                <td>No Injury</td>
+            }
+            @if (x.CRASH_SEVERITY_ID == 2)
+            {
+                <td>Possible Injury</td>
+            }
+            @if (x.CRASH_SEVERITY_ID == 3)
+            {
+                <td>Suspected Minor Injury</td>
+            }
+            @if (x.CRASH_SEVERITY_ID == 4)
+            {
+                <td>Suspected Serious Injury</td>
+            }
+            @if (x.CRASH_SEVERITY_ID == 5)
+            {
+                <td>Fatal (yeeeeet)</td>
+            }
+            @*@if (x.CRASH_SEVERITY_ID != 1 && x.CRASH_SEVERITY_ID != 2 && x.CRASH_SEVERITY_ID != 3 && x.CRASH_SEVERITY_ID != 4 && x.CRASH_SEVERITY_ID != 5)
         {
             <td>nada amigo</td>
         }*@
-        <td class="text-center"><a class="btn btn-sm btn-success" asp-controller="Home" asp-action="CrashDetails" asp-route-crashid="@x.CRASH_ID">View Details</a></td>
-        @*@if (x.WORK_ZONE_RELATED == true)
+            <td class="text-center"><a class="btn btn-sm btn-success" asp-controller="Home" asp-action="CrashDetails" asp-route-crashid="@x.CRASH_ID">View Details</a></td>
+            <td class="text-center">
+                <form method="get" asp-action="Edit">
+                    <input type="hidden" name="crashid" value="@x.CRASH_ID" />
+                    <button type="submit" class="btn btn-sm btn-warning">Edit</button>
+                </form>
+            </td>
+            <td class="text-center">
+                <form method="post" asp-action="Delete">
+                    <input type="hidden" name="crashid" value="@x.CRASH_ID" />
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </form>
+            </td>
+            @*@if (x.WORK_ZONE_RELATED == true)
         {
             <td>Yes</td>
         }
@@ -249,12 +255,12 @@
             <td>No</td>
         }*@
 
-    </tr>
-    
-    }
-</tbody>
+        </tr>
+
+        }
+    </tbody>
 </table>
-    
+
 
 <nav aria-label="Page navigation example">
     <ul class="pagination">
