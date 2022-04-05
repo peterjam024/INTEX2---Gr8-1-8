@@ -29,14 +29,16 @@ namespace CrashySmashy.Controllers
             return View();
         }
 
-        public IActionResult SeeTable()
+        public IActionResult SeeTable(int page = 1)
         {
+            int pageSize = 10;
             var crashes = _appContext.Crashes
 
                 .OrderByDescending(x => x.CRASH_ID)
-                .Take(10)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
                 .ToList();
-
+            ViewBag.currPage = page;
             return View(crashes);
         }
         [HttpGet]

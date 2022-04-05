@@ -231,3 +231,17 @@
         </table>
     </div>
 </div>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        @if (ViewBag.currPage != 1)
+        {
+            <li class="page-item"><a class="page-link" asp-action="SeeTable" asp-controller="Home" asp-route-page="@(ViewBag.currPage - 1)">Previous</a></li>
+        }
+
+        <li class="page-item"><a class="page-link" asp-action="SeeTable" asp-controller="Home" asp-route-page="@(ViewBag.currPage)">@ViewBag.currPage</a></li>
+        <li class="page-item"><a class="page-link" asp-action="SeeTable" asp-controller="Home" asp-route-page="@(ViewBag.currPage + 1)">@(ViewBag.currPage + 1)</a></li>
+        <li class="page-item"><a class="page-link" asp-action="SeeTable" asp-controller="Home" asp-route-page="@(ViewBag.currPage + 2)">@(ViewBag.currPage + 2)</a></li>
+        <li class="page-item"><a class="page-link" asp-action="SeeTable" asp-controller="Home" asp-route-page="@(ViewBag.currPage + 1)">Next</a></li>
+    </ul>
+</nav>
