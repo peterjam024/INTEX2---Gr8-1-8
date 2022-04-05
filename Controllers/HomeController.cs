@@ -29,14 +29,32 @@ namespace CrashySmashy.Controllers
             return View();
         }
 
-        public IActionResult SeeTable()
+        public IActionResult SeeTable(int page = 1, int? severity = null)
         {
-            var crashes = _appContext.Crashes
-
-                .OrderByDescending(x => x.CRASH_ID)
-                .Take(10)
-                .ToList();
-
+            int pageSize = 10;
+            ViewBag.currPage = page;
+            var crashes = new List<Crash>();
+            if (severity == null)
+            {
+                crashes = _appContext.Crashes
+                   .OrderByDescending(x => x.CRASH_ID)
+                   .Skip((page - 1) * pageSize)
+                   .Take(pageSize)
+                   .ToList();
+                ViewBag.severity = null;
+            }
+            else
+            {
+                crashes = _appContext.Crashes
+                   .Where(x => x.CRASH_SEVERITY_ID == severity)
+                   .OrderByDescending(x => x.CRASH_ID)
+                   .Skip((page - 1) * pageSize)
+                   .Take(pageSize)
+                   .ToList();
+                ViewBag.severity = severity;
+            }
+           
+            
             return View(crashes);
         }
         [HttpGet]
@@ -86,6 +104,13 @@ namespace CrashySmashy.Controllers
             _appContext.SaveChanges();
             return RedirectToAction("SeeTable");
         }
+
+        public IActionResult CrashDetails(int crashid)
+        {
+            Crash crash = _appContext.Crashes.Single(x => x.CRASH_ID == crashid);
+            return View(crash);
+        }
+
 
     }
 
