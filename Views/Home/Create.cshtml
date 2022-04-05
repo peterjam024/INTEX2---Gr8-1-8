@@ -59,21 +59,31 @@
                         <br />
 
 
-                        <label asp-for="CITY">City:</label>
-                        <select asp-for="CITY">
-                            <option value="SALT LAKE">salt lake</option>
-                            <option value="SALT LAKE">testing</option>
-                            <option value="SALT LAKE">testing 2</option>
-                        </select>
-                        <br />
+                        <div class="form-group">
+                            <div class="form-group col-md-4">
+                                <label asp-for="CITY">City</label>
+                                <select class="form-control" id="inputCity" asp-for="CITY">
+                                    <option></option>
+                                    @foreach (var city in ViewBag.cities)
+                                    {
+                                        <option>@city</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
 
-                        <label asp-for="COUNTY_NAME">County</label>
-                        <select asp-for="COUNTY_NAME">
-                            <option value="SALT LAKE">salt lake</option>
-                            <option value="SALT LAKE">testing</option>
-                            <option value="SALT LAKE">testing 2</option>
-                        </select>
-                        <br />
+                        <div class="form-group">
+                            <div class="form-group col-md-4">
+                                <label asp-for="COUNTY_NAME">County</label>
+                                <select class="form-control" id="inputCounty" asp-for="COUNTY_NAME">
+                                    <option></option>
+                                    @foreach (var county in ViewBag.counties)
+                                    {
+                                        <option>@county</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

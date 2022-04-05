@@ -37,8 +37,8 @@ namespace CrashySmashy.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            ViewBag.cities = _appContext.Crashes.Select(x => x.CITY).ToList();
-            ViewBag.counties = _appContext.Crashes.Select(x => x.COUNTY_NAME).ToList();
+            ViewBag.cities = _appContext.Crashes.Where(x => x.CITY != "***  ERROR  ***").Select(x => x.CITY).Distinct().OrderBy(x => x).ToList();
+            ViewBag.counties = _appContext.Crashes.Select(x => x.COUNTY_NAME).Distinct().OrderBy(x => x).ToList();
             return View(new Crash());
         }
 
@@ -51,16 +51,16 @@ namespace CrashySmashy.Controllers
                 _appContext.SaveChanges();
                 return RedirectToAction("SeeTable");
             }
-            ViewBag.cities = _appContext.Crashes.Select(x => x.CITY).ToList();
-            ViewBag.counties = _appContext.Crashes.Select(x => x.COUNTY_NAME).ToList();
+            ViewBag.cities = _appContext.Crashes.Where(x => x.CITY != "***  ERROR  ***").Select(x => x.CITY).Distinct().OrderBy(x => x).ToList();
+            ViewBag.counties = _appContext.Crashes.Select(x => x.COUNTY_NAME).Distinct().OrderBy(x => x).ToList();
             return View("Create");
         }
 
         [HttpGet]
         public IActionResult Edit(int crashid)
         {
-            ViewBag.cities = _appContext.Crashes.Select(x => x.CITY).ToList();
-            ViewBag.counties = _appContext.Crashes.Select(x => x.COUNTY_NAME).ToList();
+            ViewBag.cities = _appContext.Crashes.Where(x => x.CITY != "***  ERROR  ***").Select(x => x.CITY).Distinct().OrderBy(x => x).ToList();
+            ViewBag.counties = _appContext.Crashes.Select(x => x.COUNTY_NAME).Distinct().OrderBy(x => x).ToList();
             Crash crash = _appContext.Crashes.Single(x => x.CRASH_ID == crashid);
             return View("Create", crash);
 
