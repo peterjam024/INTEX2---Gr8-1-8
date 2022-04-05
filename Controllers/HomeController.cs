@@ -27,8 +27,7 @@ namespace CrashySmashy.Controllers
         public IActionResult SeeTable()
         {
             var crashes = _appContext.Crashes
-                
-                
+                .OrderByDescending(x => x.CRASH_ID)
                 .Take(10)
                 .ToList();
 

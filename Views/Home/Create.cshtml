@@ -14,7 +14,7 @@
         <br />
 
         <label asp-for="CRASH_DATETIME">Crash Date:</label>
-        <input type="datetime-local" />
+        <input type="datetime-local" asp-for="CRASH_DATETIME"/>
         <br />
 
         <label asp-for="CRASH_SEVERITY_ID">Crash Severity:</label>
@@ -288,5 +288,7 @@
 
         <br />
         <button class="btn btn-success" type="submit">Submit</button>
+        <button class="btn btn-dark" asp-action="SeeTable">Cancel</button>
+
     </form>
     </div>
