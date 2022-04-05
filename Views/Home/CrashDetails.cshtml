@@ -3,4 +3,216 @@
 
 @model Crash
 
-<h1>@Model.CRASH_ID</h1>
+<h1>Crash Details</h1>
+<h2>(<span class="font-italic font-weight-normal">@Model.CRASH_ID</span>)</h2>
+<h1></h1>
+<div class="accordion" id="accordionExample">
+
+
+
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Location Information
+                </button>
+            </h5>
+        </div>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+
+               
+                
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Additional Information
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body">
+
+                    <label asp-for="WORK_ZONE_RELATED">In a work zone:</label>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.WORK_ZONE_RELATED, true) Yes
+                    </div>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.WORK_ZONE_RELATED, false) No
+                    </div>
+                    <br />
+
+
+
+                    <label asp-for="PEDESTRIAN_INVOLVED">Pedestrian Involved:</label>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.PEDESTRIAN_INVOLVED, true) Yes
+                    </div>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.PEDESTRIAN_INVOLVED, false) No
+                    </div>
+                    <br />
+
+
+                    <label asp-for="BICYCLIST_INVOLVED">Bicyclist Involved:</label>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.BICYCLIST_INVOLVED, true) Yes
+                    </div>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.BICYCLIST_INVOLVED, false) No
+                    </div>
+                    <br />
+
+                    <label asp-for="MOTORCYCLE_INVOLVED">Motorcycle Involved:</label>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.MOTORCYCLE_INVOLVED, true) Yes
+                    </div>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.MOTORCYCLE_INVOLVED, false) No
+                    </div>
+                    <br />
+
+                    <label asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED">Commercial Vehicle Involved:</label>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.COMMERCIAL_MOTOR_VEH_INVOLVED, true) Yes
+                    </div>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.COMMERCIAL_MOTOR_VEH_INVOLVED, false) No
+                    </div>
+                    <br />
+
+                    <label asp-for="IMPROPER_RESTRAINT">Improper Restraint:</label>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.IMPROPER_RESTRAINT, true) Yes
+                    </div>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.IMPROPER_RESTRAINT, false) No
+                    </div>
+                    <br />
+
+                    <label asp-for="UNRESTRAINED">Unrestrained:</label>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.UNRESTRAINED, true) Yes
+                    </div>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.UNRESTRAINED, false) No
+                    </div>
+                    <br />
+
+                    <label asp-for="DUI">DUI:</label>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.DUI, true) Yes
+                    </div>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.DUI, false) No
+                    </div>
+                    <br />
+
+                    <label asp-for="INTERSECTION_RELATED">Intersection:</label>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.INTERSECTION_RELATED, true) Yes
+                    </div>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.INTERSECTION_RELATED, false) No
+                    </div>
+                    <br />
+
+                    <label asp-for="WILD_ANIMAL_RELATED">Wild Animal Related:</label>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.WILD_ANIMAL_RELATED, true) Yes
+                    </div>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.WILD_ANIMAL_RELATED, false) No
+                    </div>
+                    <br />
+
+                    <label asp-for="DOMESTIC_ANIMAL_RELATED">Domestic Animal Related:</label>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.DOMESTIC_ANIMAL_RELATED, true) Yes
+                    </div>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.DOMESTIC_ANIMAL_RELATED, false) No
+                    </div>
+                    <br />
+
+                    <label asp-for="OVERTURN_ROLLOVER">Vehicle Rollover:</label>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.OVERTURN_ROLLOVER, true) Yes
+                    </div>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.OVERTURN_ROLLOVER, false) No
+                    </div>
+                    <br />
+
+                    <label asp-for="TEENAGE_DRIVER_INVOLVED">Teenage Driver Involved:</label>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.TEENAGE_DRIVER_INVOLVED, true) Yes
+                    </div>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.TEENAGE_DRIVER_INVOLVED, false) No
+                    </div>
+                    <br />
+
+                    <label asp-for="OLDER_DRIVER_INVOLVED">Older Driver Involved:</label>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.OLDER_DRIVER_INVOLVED, true) Yes
+                    </div>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.OLDER_DRIVER_INVOLVED, false) No
+                    </div>
+                    <br />
+
+                    <label asp-for="NIGHT_DARK_CONDITION">Dark Conditions:</label>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.NIGHT_DARK_CONDITION, true) Yes
+                    </div>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.NIGHT_DARK_CONDITION, false) No
+                    </div>
+                    <br />
+
+                    <label asp-for="SINGLE_VEHICLE">Single Vehicle:</label>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.SINGLE_VEHICLE, true) Yes
+                    </div>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.SINGLE_VEHICLE, false) No
+                    </div>
+                    <br />
+
+                    <label asp-for="DISTRACTED_DRIVING">Distracted Driving:</label>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.DISTRACTED_DRIVING, true) Yes
+                    </div>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.DISTRACTED_DRIVING, false) No
+                    </div>
+                    <br />
+
+                    <label asp-for="DROWSY_DRIVING">Drowsy Driving:</label>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.DROWSY_DRIVING, true) Yes
+                    </div>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.DROWSY_DRIVING, false) No
+                    </div>
+                    <br />
+
+                    <label asp-for="ROADWAY_DEPARTURE">Left the Road:</label>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.ROADWAY_DEPARTURE, true) Yes
+                    </div>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.ROADWAY_DEPARTURE, false) No
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
