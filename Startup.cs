@@ -2,6 +2,7 @@ using CrashySmashy.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,6 +33,29 @@ namespace CrashySmashy
                 options.UseMySql(Configuration["ConnectionStrings:MyConnection"]);
 
             });
+
+
+            //add the dbContext of Identity!
+            services.AddDbContext<AppIdentityDBContext>(options => options.UseMySql(Configuration["ConnectionStrings:IdentityDBConnection"]));
+
+
+            //this goes along our datbase above = serves as helping with login stuff
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppIdentityDBContext>();
+
+            services.AddRazorPages();
+
+
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+
+            //services.AddScoped<Basket>(x => SessionBasket.GetBasket(x));
+
+
+            //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddServerSideBlazor();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +76,9 @@ namespace CrashySmashy
 
             app.UseRouting();
 
+            app.UseSession();
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -60,6 +87,9 @@ namespace CrashySmashy
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            //calling the user at the startup! we want the IApplication BUilder, which we define above as app!
+            IdentitySeedData.EnsurePopulated(app);
         }
     }
 }
