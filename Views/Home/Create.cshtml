@@ -53,11 +53,15 @@
                 </div>
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <div class="card-body">
-                        <label asp-for="MAIN_ROAD_NAME">Street:</label>
-                        <input asp-for="MAIN_ROAD_NAME" />
-                        <br />
-                        <br />
 
+                        <div class="form-group">
+                            <div class="form-group col-md-4">
+                                <div>
+                                    <label asp-for="MAIN_ROAD_NAME">Street:</label>
+                                    <input  class="form-control" asp-for="MAIN_ROAD_NAME" />
+                                </div> 
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <div class="form-group col-md-4">
