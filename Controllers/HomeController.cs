@@ -19,12 +19,20 @@ namespace CrashySmashy.Controllers
             _appContext = crashesContext;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
 
+        [HttpGet]
         public IActionResult Search()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult AnalyticsMaster()
         {
             return View();
         }
