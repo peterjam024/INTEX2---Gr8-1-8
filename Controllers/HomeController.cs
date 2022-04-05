@@ -1,4 +1,5 @@
 ﻿using CrashySmashy.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -29,6 +30,39 @@ namespace CrashySmashy.Controllers
         public IActionResult Search()
         {
             return View();
+        }
+
+
+        // GET: /<controller>/
+        [HttpGet]
+        [Authorize]
+        public IActionResult Admin(int page = 1, int? severity = null)
+        {
+            int pageSize = 10;
+            ViewBag.currPage = page;
+            var crashes = new List<Crash>();
+            if (severity == null)
+            {
+                crashes = _appContext.Crashes
+                   .OrderByDescending(x => x.CRASH_ID)
+                   .Skip((page - 1) * pageSize)
+                   .Take(pageSize)
+                   .ToList();
+                ViewBag.severity = null;
+            }
+            else
+            {
+                crashes = _appContext.Crashes
+                   .Where(x => x.CRASH_SEVERITY_ID == severity)
+                   .OrderByDescending(x => x.CRASH_ID)
+                   .Skip((page - 1) * pageSize)
+                   .Take(pageSize)
+                   .ToList();
+                ViewBag.severity = severity;
+            }
+
+
+            return View(crashes);
         }
 
         [HttpGet]
@@ -65,6 +99,8 @@ namespace CrashySmashy.Controllers
             
             return View(crashes);
         }
+
+
         [HttpGet]
         public IActionResult Create()
         {

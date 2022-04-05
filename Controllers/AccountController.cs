@@ -22,6 +22,7 @@ namespace CrashySmashy.Controllers
         private SignInManager<IdentityUser> signInManager;
 
 
+
         //Constructor!
         //gets instances of each of the things and passes in as parameters! 
         public AccountController(UserManager<IdentityUser> um, SignInManager<IdentityUser> sim)
@@ -39,6 +40,8 @@ namespace CrashySmashy.Controllers
         {
             return View();
         }
+
+
 
 
 
@@ -75,7 +78,7 @@ namespace CrashySmashy.Controllers
                     {
                         //return Redirect(loginModel?.ReturnUrl ?? "/Admin");
                         //return RedirectToAction(loginModel?.ReturnUrl ?? "Admin");
-                        return RedirectToAction("Admin");
+                        return RedirectToAction("Admin", "Home", null);
                     }
                 }
             }
