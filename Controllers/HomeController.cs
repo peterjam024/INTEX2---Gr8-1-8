@@ -71,6 +71,9 @@ namespace CrashySmashy.Controllers
             return View();
         }
 
+
+
+
         public IActionResult SeeTable(int page = 1, int? severity = null)
         {
             int pageSize = 10;
@@ -102,6 +105,7 @@ namespace CrashySmashy.Controllers
 
 
         [HttpGet]
+        [Authorize]
         public IActionResult Create()
         {
             ViewBag.cities = _appContext.Crashes.Where(x => x.CITY != "***  ERROR  ***").Select(x => x.CITY).Distinct().OrderBy(x => x).ToList();
@@ -110,6 +114,7 @@ namespace CrashySmashy.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Create(Crash crash)
         {
             if (ModelState.IsValid)
@@ -124,6 +129,7 @@ namespace CrashySmashy.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Edit(int crashid)
         {
             ViewBag.cities = _appContext.Crashes.Where(x => x.CITY != "***  ERROR  ***").Select(x => x.CITY).Distinct().OrderBy(x => x).ToList();
@@ -132,7 +138,10 @@ namespace CrashySmashy.Controllers
             return View("Create", crash);
 
         }
+
+
         [HttpPost]
+        [Authorize]
         public IActionResult Edit(Crash crash)
         {
             _appContext.Update(crash);
@@ -140,7 +149,9 @@ namespace CrashySmashy.Controllers
 
             return RedirectToAction("SeeTable");
         }
-        
+
+
+        [Authorize]
         public IActionResult Delete(int crashid)
         {
             Crash crash = _appContext.Crashes.Single(x => x.CRASH_ID == crashid);
