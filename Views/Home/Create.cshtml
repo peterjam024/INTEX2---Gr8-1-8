@@ -13,35 +13,30 @@
         <input type="hidden" asp-for="CRASH_ID" />
         <br />
 
-        <label asp-for="CRASH_DATETIME">Crash Date:</label>
-        <input type="datetime-local" asp-for="CRASH_DATETIME"/>
-        <br />
-
-        <label asp-for="CRASH_SEVERITY_ID">Crash Severity:</label>
-        <select asp-for="CRASH_SEVERITY_ID">
-            <option value="1">No Injury</option>
-            <option value="2">Possible Injury</option>
-            <option value="3">Suspected Minor Injury</option>
-            <option value="4">Suspected Serious Injury</option>
-            <option value="5">Fatal</option>
-
-        </select>
-        <br />
-        <div class="accordion" id="accordionExample">
-            <div class="card">
-                <div class="card-header" id="headingTwo">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            General Information
-                        </button>
-                    </h5>
-                </div>
-                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                    <div class="card-body">
-
-                    </div>
+        <div class="form-group">
+            <div class="form-group col-md-3">
+                <div>
+                    <label asp-for="CRASH_DATETIME">Crash Date</label>
+                    <input class="form-control" asp-for="CRASH_DATETIME" />
                 </div>
             </div>
+        </div>
+        <div class="form-group">
+            <div class="form-group col-md-3">
+                <label asp-for="CRASH_SEVERITY_ID">Crash Severity</label>
+                <select class="form-control" id="inputCrashSeverity" asp-for="CRASH_SEVERITY_ID">
+                    <option value="1">No Injury</option>
+                    <option value="2">Possible Injury</option>
+                    <option value="3">Suspected Minor Injury</option>
+                    <option value="4">Suspected Serious Injury</option>
+                    <option value="5">Fatal</option>
+                </select>
+            </div>
+        </div>
+        
+        <br />
+        <div class="accordion" id="accordionExample">
+
 
 
             <div class="card">
@@ -52,20 +47,20 @@
                         </button>
                     </h5>
                 </div>
-                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <div class="card-body">
 
                         <div class="form-group">
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                                 <div>
-                                    <label asp-for="MAIN_ROAD_NAME">Street:</label>
+                                    <label asp-for="MAIN_ROAD_NAME">Street</label>
                                     <input class="form-control" asp-for="MAIN_ROAD_NAME" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                                 <label asp-for="CITY">City</label>
                                 <select class="form-control" id="inputCity" asp-for="CITY">
                                     <option></option>
@@ -78,7 +73,7 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                                 <label asp-for="COUNTY_NAME">County</label>
                                 <select class="form-control" id="inputCounty" asp-for="COUNTY_NAME">
                                     <option></option>

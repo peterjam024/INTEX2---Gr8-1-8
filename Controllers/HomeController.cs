@@ -105,6 +105,13 @@ namespace CrashySmashy.Controllers
             return RedirectToAction("SeeTable");
         }
 
+        public IActionResult CrashDetails(int crashid)
+        {
+            Crash crash = _appContext.Crashes.Single(x => x.CRASH_ID == crashid);
+            return View(crash);
+        }
+
+
     }
 
 
