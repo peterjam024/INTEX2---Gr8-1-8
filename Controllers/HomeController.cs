@@ -29,16 +29,32 @@ namespace CrashySmashy.Controllers
             return View();
         }
 
-        public IActionResult SeeTable(int page = 1)
+        public IActionResult SeeTable(int page = 1, int? severity = null)
         {
             int pageSize = 10;
-            var crashes = _appContext.Crashes
-
-                .OrderByDescending(x => x.CRASH_ID)
-                .Skip((page - 1) * pageSize)
-                .Take(pageSize)
-                .ToList();
             ViewBag.currPage = page;
+            var crashes = new List<Crash>();
+            if (severity == null)
+            {
+                crashes = _appContext.Crashes
+                   .OrderByDescending(x => x.CRASH_ID)
+                   .Skip((page - 1) * pageSize)
+                   .Take(pageSize)
+                   .ToList();
+                ViewBag.severity = null;
+            }
+            else
+            {
+                crashes = _appContext.Crashes
+                   .Where(x => x.CRASH_SEVERITY_ID == severity)
+                   .OrderByDescending(x => x.CRASH_ID)
+                   .Skip((page - 1) * pageSize)
+                   .Take(pageSize)
+                   .ToList();
+                ViewBag.severity = severity;
+            }
+           
+            
             return View(crashes);
         }
         [HttpGet]
