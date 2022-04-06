@@ -28,6 +28,12 @@ namespace CrashySmashy
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddHsts(options =>
+            {
+                options.Preload = true;
+                options.IncludeSubDomains = true;
+                options.MaxAge = TimeSpan.FromDays(365);
+            });
             services.AddDbContext<CrashesContext>(options =>
             {
                 //options.UseSqlite(Configuration["ConnectionStrings:MyConnection"]);
@@ -52,8 +58,6 @@ namespace CrashySmashy
 
             services.AddDistributedMemoryCache();
             services.AddSession();
-
-            //services.AddScoped<Basket>(x => SessionBasket.GetBasket(x));
 
 
             //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
