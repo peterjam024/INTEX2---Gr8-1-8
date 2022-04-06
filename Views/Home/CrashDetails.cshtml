@@ -13,7 +13,7 @@
         <h5>Date and Time: <span class="font-weight-normal">@Model.CRASH_DATETIME</span></h5>
     </div>
 </div>
-
+<br />
 
 <div class="accordion" id="accordionExample">
 
@@ -31,10 +31,17 @@
 
                 <div class="row">
                     <div class="col">
-                        <h6></h6>
+                        <h5>Street: <span class="font-weight-normal">@Model.MAIN_ROAD_NAME</span></h5>
+                        <br />
+                        <h5>City: <span class="font-weight-normal">@Model.CITY</span></h5>
+                        <br />
+                        <h5>County: <span class="font-weight-normal">@Model.COUNTY_NAME</span></h5>
                     </div>
                     <div class="col">
-
+                        <p><span class="font-weight-bold">Route: </span>@Model.ROUTE</p>
+                        <p><span class="font-weight-bold">Milepoint: </span>@Model.MILEPOINT</p>
+                        <p><span class="font-weight-bold">LAT: </span>@Model.LAT_UTM_Y</p>
+                        <p><span class="font-weight-bold">LONG: </span>@Model.LONG_UTM_X</p>
                     </div>
                 </div>
 
@@ -53,7 +60,186 @@
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
             <div class="card-body">
 
+                <div class="row">
+                    <div class="col">
+                        @if (Model.WORK_ZONE_RELATED == true)
+                        {
+                            <p><span class="font-weight-bold">Work Zone Related: </span>Yes</p>
 
+                        }
+                        else
+                        {
+                            <p><span class="font-weight-bold">Work Zone Related: </span>No</p>
+                        }
+                        @if (Model.MOTORCYCLE_INVOLVED == true)
+                        {
+                            <p><span class="font-weight-bold">Motorcyclist Involved: </span>Yes</p>
+
+                        }
+                        else
+                        {
+                            <p><span class="font-weight-bold">Motorcyclist Involved: </span>No</p>
+                        }
+                        @if (Model.DUI == true)
+                        {
+                            <p><span class="font-weight-bold">DUI: </span>Yes</p>
+
+                        }
+                        else
+                        {
+                            <p><span class="font-weight-bold">DUI: </span>No</p>
+                        }
+                        @if (Model.DOMESTIC_ANIMAL_RELATED == true)
+                        {
+                            <p><span class="font-weight-bold">Domestic Animal Related: </span>Yes</p>
+
+                        }
+                        else
+                        {
+                            <p><span class="font-weight-bold">Domestic Animal Related: </span>No</p>
+                        }
+                        @if (Model.TEENAGE_DRIVER_INVOLVED == true)
+                        {
+                            <p><span class="font-weight-bold">Teenage Driver Involved: </span>Yes</p>
+
+                        }
+                        else
+                        {
+                            <p><span class="font-weight-bold">Teenage Driver Involved: </span>No</p>
+                        }
+                        @if (Model.SINGLE_VEHICLE == true)
+                        {
+                            <p><span class="font-weight-bold">Single Vehicle: </span>Yes</p>
+
+                        }
+                        else
+                        {
+                            <p><span class="font-weight-bold">Single Vehicle: </span>No</p>
+                        }
+                        @if (Model.ROADWAY_DEPARTURE == true)
+                        {
+                            <p><span class="font-weight-bold">Roadway Departures: </span>Yes</p>
+
+                        }
+                        else
+                        {
+                            <p><span class="font-weight-bold">Roadway Departures: </span>No</p>
+                        }
+                    </div>
+
+                    <div class="col">
+                        @if (Model.PEDESTRIAN_INVOLVED == true)
+                        {
+                            <p><span class="font-weight-bold">Pedestrian Involved: </span>Yes</p>
+
+                        }
+                        else
+                        {
+                            <p><span class="font-weight-bold">Pedestrian Involved: </span>No</p>
+                        }
+                        @if (Model.IMPROPER_RESTRAINT == true)
+                        {
+                            <p><span class="font-weight-bold">Improper Restraint Involved: </span>Yes</p>
+
+                        }
+                        else
+                        {
+                            <p><span class="font-weight-bold">Improper Restraint Involved: </span>No</p>
+                        }
+                        @if (Model.INTERSECTION_RELATED == true)
+                        {
+                            <p><span class="font-weight-bold">Intersection Related: </span>Yes</p>
+
+                        }
+                        else
+                        {
+                            <p><span class="font-weight-bold">Intersection Related: </span>No</p>
+                        }
+                        @if (Model.OVERTURN_ROLLOVER == true)
+                        {
+                            <p><span class="font-weight-bold">Overturned Vehicle: </span>Yes</p>
+
+                        }
+                        else
+                        {
+                            <p><span class="font-weight-bold">Overturned Vehicle: </span>No</p>
+                        }
+                        @if (Model.OLDER_DRIVER_INVOLVED == true)
+                        {
+                            <p><span class="font-weight-bold">Older Driver Involved: </span>Yes</p>
+
+                        }
+                        else
+                        {
+                            <p><span class="font-weight-bold">Older Driver Involved: </span>No</p>
+                        }
+                        @if (Model.DISTRACTED_DRIVING == true)
+                        {
+                            <p><span class="font-weight-bold">Distracted Driving Involved: </span>Yes</p>
+
+                        }
+                        else
+                        {
+                            <p><span class="font-weight-bold">Distracted Driving Involved: </span>No</p>
+                        }
+                    </div>
+                    <div class="col">
+                        @if (Model.BICYCLIST_INVOLVED == true)
+                        {
+                            <p><span class="font-weight-bold">Bicyclist Involved: </span>Yes</p>
+
+                        }
+                        else
+                        {
+                            <p><span class="font-weight-bold">Bicyclist Involved: </span>No</p>
+                        }
+                        @if (Model.UNRESTRAINED == true)
+                        {
+                            <p><span class="font-weight-bold">No Seatbelt: </span>Yes</p>
+
+                        }
+                        else
+                        {
+                            <p><span class="font-weight-bold">No Seatbelt: </span>No</p>
+                        }
+                        @if (Model.WILD_ANIMAL_RELATED == true)
+                        {
+                            <p><span class="font-weight-bold">Wild Animal Involved: </span>Yes</p>
+
+                        }
+                        else
+                        {
+                            <p><span class="font-weight-bold">Wild Animal Involved: </span>No</p>
+                        }
+                        @if (Model.COMMERCIAL_MOTOR_VEH_INVOLVED == true)
+                        {
+                            <p><span class="font-weight-bold">Commercial Vehicle Involved: </span>Yes</p>
+
+                        }
+                        else
+                        {
+                            <p><span class="font-weight-bold">Commercial Vehicle Involved: </span>No</p>
+                        }
+                        @if (Model.NIGHT_DARK_CONDITION == true)
+                        {
+                            <p><span class="font-weight-bold">Night/Dark Conditions: </span>Yes</p>
+
+                        }
+                        else
+                        {
+                            <p><span class="font-weight-bold">Night/Dark Conditions: </span>No</p>
+                        }
+                        @if (Model.DROWSY_DRIVING == true)
+                        {
+                            <p><span class="font-weight-bold">Drowsy Driving Involved: </span>Yes</p>
+
+                        }
+                        else
+                        {
+                            <p><span class="font-weight-bold">Drowsy Driving Involved: </span>No</p>
+                        }
+                    </div>
+                </div>
 
             </div>
         </div>
