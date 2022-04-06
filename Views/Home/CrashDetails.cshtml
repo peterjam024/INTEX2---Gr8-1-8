@@ -1,8 +1,8 @@
 ﻿@{
 }
-
+@inject SignInManager<IdentityUser> signInManager;
 @model Crash
-<div class="d-flex justify-content-between" >
+<div class="d-flex justify-content-between">
     <div>
         <h1>Crash Details</h1>
         <h2>(<span class="font-italic font-weight-normal">@Model.CRASH_ID</span>)</h2>
@@ -245,3 +245,35 @@
         </div>
     </div>
 </div>
+<br />
+@if (signInManager.IsSignedIn(User))
+{
+
+    <a class="btn btn-outline-primary mr-2" asp-controller="Home" asp-action="Edit" asp-route-crashid="@Model.CRASH_ID">Edit</a>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
+        Delete
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Delete Accident</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    This action cannot be undone. Are you sure you would like to delete the Accident?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-crashid="@Model.CRASH_ID">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

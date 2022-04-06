@@ -33,8 +33,6 @@
             <td>County Name</td>
             <td>Severity (1-5)</td>
             <td></td>
-            <td></td>
-            <td></td>
 
             @*<td>Working Zone</td>
         <td>Pedestrian Involved</td>
@@ -90,7 +88,7 @@
             <td>nada amigo</td>
         }*@
             <td class="text-center"><a class="btn btn-sm btn-success" asp-controller="Home" asp-action="CrashDetails" asp-route-crashid="@x.CRASH_ID">View Details</a></td>
-            <td class="text-center">
+            @*<td class="text-center">
                 <form method="get" asp-action="Edit">
                     <input type="hidden" name="crashid" value="@x.CRASH_ID" />
                     <button type="submit" class="btn btn-sm btn-warning">Edit</button>
@@ -101,7 +99,7 @@
                     <input type="hidden" name="crashid" value="@x.CRASH_ID" />
                     <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                 </form>
-            </td>
+            </td>*@
             @*@if (x.WORK_ZONE_RELATED == true)
         {
             <td>Yes</td>
