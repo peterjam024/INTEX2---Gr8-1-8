@@ -78,7 +78,7 @@ namespace CrashySmashy.Controllers
                     {
                         //return Redirect(loginModel?.ReturnUrl ?? "/Admin");
                         //return RedirectToAction(loginModel?.ReturnUrl ?? "Admin");
-                        return RedirectToAction("Admin", "Home", null);
+                        return RedirectToAction("SeeTable", "Home", null);
                     }
                 }
             }
