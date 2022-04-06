@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.ML.OnnxRuntime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,9 @@ namespace CrashySmashy
                 options.UseMySql(Configuration["ConnectionStrings:MyConnection"]);
 
             });
+            services.AddSingleton<InferenceSession>(
+            new InferenceSession("Models/crash_severity11.onnx")
+);
 
 
             //add the dbContext of Identity!

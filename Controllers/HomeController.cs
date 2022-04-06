@@ -65,11 +65,7 @@ namespace CrashySmashy.Controllers
             return View(crashes);
         }
 
-        [HttpGet]
-        public IActionResult AnalyticsMaster()
-        {
-            return View();
-        }
+
 
 
 
