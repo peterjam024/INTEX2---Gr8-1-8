@@ -10,8 +10,11 @@ namespace CrashySmashy.Models
         public int CRASH_ID { get; set; }
         public DateTime CRASH_DATETIME { get; set; }
         public string ROUTE { get; set; }
+        [Range(0.000, 999.999)]
         public decimal MILEPOINT { get; set; }
+        [Range(0.000, 9999999.999)]
         public decimal LAT_UTM_Y { get; set; }
+        [Range(0.000, 9999999.999)]
         public decimal LONG_UTM_X { get; set; }
         public string MAIN_ROAD_NAME { get; set; }
         public string CITY { get; set; }

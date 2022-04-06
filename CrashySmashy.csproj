@@ -13,7 +13,6 @@
     <None Remove="Models\ViewModels\" />
     <None Remove="Microsoft.EntityFrameworkCore.Design" />
     <None Remove="Microsoft.EntityFrameworkCore.Tools" />
-    <None Remove="Pages\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.23" />
@@ -32,6 +31,5 @@
   <ItemGroup>
     <Folder Include="Views\Account\" />
     <Folder Include="Models\ViewModels\" />
-    <Folder Include="Pages\" />
   </ItemGroup>
 </Project>
