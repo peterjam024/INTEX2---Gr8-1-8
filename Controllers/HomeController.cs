@@ -27,6 +27,12 @@ namespace CrashySmashy.Controllers
         }
 
         [HttpGet]
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [HttpGet]
         public IActionResult Search()
         {
             return View();
