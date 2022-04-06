@@ -33,13 +33,13 @@ namespace CrashySmashy.Controllers
 
 
 
-        // GET: /<controller>/
-        [HttpGet]
-        [Authorize]
-        public IActionResult Admin()
-        {
-            return View();
-        }
+        //// GET: /<controller>/
+        //[HttpGet]
+        //[Authorize]
+        //public IActionResult Admin()
+        //{
+        //    return View();
+        //}
 
 
 
