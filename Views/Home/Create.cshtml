@@ -235,12 +235,12 @@
                                 </div>
 
                                 <div class="col">
-                                    <label asp-for="INTERSECTION_RELATED">Intersection:</label>
+                                    <label asp-for="DROWSY_DRIVING">Drowsy Driving:</label>
                                     <div class="form-check">
-                                        @Html.RadioButtonFor(model => model.INTERSECTION_RELATED, true) Yes
+                                        @Html.RadioButtonFor(model => model.DROWSY_DRIVING, true) Yes
                                     </div>
                                     <div class="form-check">
-                                        @Html.RadioButtonFor(model => model.INTERSECTION_RELATED, false) No
+                                        @Html.RadioButtonFor(model => model.DROWSY_DRIVING, false) No
                                     </div>
                                     <br />
                                 </div>
@@ -356,16 +356,6 @@
 
                             @*SEVENTH ROW*@
                         <div class="row">
-                            <div class="col">
-                                <label asp-for="DROWSY_DRIVING">Drowsy Driving:</label>
-                                <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.DROWSY_DRIVING, true) Yes
-                                </div>
-                                <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.DROWSY_DRIVING, false) No
-                                </div>
-                                <br />
-                            </div>
 
                             <div class="col">
                                 <label asp-for="ROADWAY_DEPARTURE">Left the Road:</label>
@@ -380,11 +370,15 @@
 
                             <div class="col">
                                 <label>Yeet Master:</label>
-                                <select >
+                                <select>
                                     <option>YEET</option>
                                     <option>yes</option>
                                 </select>
                                 <br />
+                            </div>
+
+                            <div class="col">
+
                             </div>
                         </div>
                         </div>
