@@ -16,6 +16,11 @@
         <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
             <div class="position-sticky">
                 <div class="list-group list-group-flush mx-3 mt-4">
+                    <a asp-controller="Home" asp-action="Index"
+                       class="list-group-item list-group-item-action py-2 ripple"
+                       aria-current="true">
+                        <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Home</span>
+                    </a>
                     <a asp-controller="Home" asp-action="Admin"
                        class="list-group-item list-group-item-action py-2 ripple"
                        aria-current="true">
@@ -28,7 +33,7 @@
                     <a asp-area="" asp-controller="Home" asp-action="SeeTable" class="list-group-item list-group-item-action py-2 ripple">
                         <i class="fas fa-chart-pie fa-fw me-3"></i><span>All accidents</span>
                     </a>
-                    <a asp-controller="Home" asp-action="Create"class="list-group-item list-group-item-action py-2 ripple"><i class="fas fa-chart-bar fa-fw me-3"></i><span>Report an accident</span></a>
+                    <a asp-controller="Home" asp-action="Create" class="list-group-item list-group-item-action py-2 ripple"><i class="fas fa-chart-bar fa-fw me-3"></i><span>Report an accident</span></a>
                 </div>
             </div>
         </nav>
