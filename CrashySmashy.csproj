@@ -35,5 +35,8 @@
     <Folder Include="Views\Account\" />
     <Folder Include="Models\ViewModels\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\machineLearning\crash_severity11.onnx" />
+  </ItemGroup>
     
 </Project>
