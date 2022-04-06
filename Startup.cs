@@ -77,14 +77,18 @@ namespace CrashySmashy
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.Use(async (ctx, next) =>
+            {
+                ctx.Response.Headers.Add("Content-Security-Policy", "default-src 'self';");
+                await next();
+            });
             app.UseRouting();
 
             app.UseSession();
 
             app.UseAuthentication();
             app.UseAuthorization();
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

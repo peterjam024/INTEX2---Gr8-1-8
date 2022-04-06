@@ -81,3 +81,7 @@
     box-shadow: none;
     transform: translateY(0);
 }
+
+.divpad {
+    padding: 0px 100px 0px 100px;
+}
