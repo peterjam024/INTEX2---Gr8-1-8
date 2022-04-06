@@ -10,7 +10,10 @@ namespace CrashySmashy.Models
     public static class IdentitySeedData
     {
         private const string adminUser = "admin";
+        private const string adminUser2 = "admin2";
+
         private const string adminPassword = "Passw3rd!gr8i8";
+        private const string adminPassword2 = "Passw3rd!gr8i8YEET";
 
 
 
@@ -39,6 +42,7 @@ namespace CrashySmashy.Models
             //this is the name of the identiy user
             IdentityUser user = await userManager.FindByIdAsync(adminUser);
 
+            IdentityUser user2 = await userManager.FindByIdAsync(adminUser2);
 
             //if the above user is null THEN
             if (user == null)
@@ -51,6 +55,17 @@ namespace CrashySmashy.Models
 
                 //creates a new entry in database for this particular user and it uses this password
                 await userManager.CreateAsync(user, adminPassword);
+            }
+            if (user2 == null)
+            {
+                user2 = new IdentityUser(adminUser2);
+
+                user2.Email = "admin2@yeet.com";
+
+                user2.PhoneNumber = "555-1235";
+
+                //creates a new entry in database for this particular user and it uses this password
+                await userManager.CreateAsync(user2, adminPassword2);
             }
 
         }

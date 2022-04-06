@@ -76,13 +76,14 @@
                         @*<a asp-action="Login" asp-controller="Account"><button class="buttonL">Login</button></a>*@
                         @if (signInManager.IsSignedIn(User))
                         {
+                            
                             <a class="buttonL" style="float:right" href="/account/logout">Logout</a>
                         }
                         else
                         {
                             <a class="buttonL" style="float:right" href="/account/login">Login</a>
                         }
-
+                        
                     </li>
                 </ul>
             </div>

@@ -2,28 +2,21 @@
 }
 
 @model Crash
+<div class="d-flex justify-content-between" >
+    <div>
+        <h1>Crash Details</h1>
+        <h2>(<span class="font-italic font-weight-normal">@Model.CRASH_ID</span>)</h2>
+    </div>
+    <div class="pt-2">
+        @*Chnage crash Severity to display text and not number *@
+        <h5>Severity Level: <span class="font-weight-normal">@Model.CRASH_SEVERITY_ID</span></h5>
+        <h5>Date and Time: <span class="font-weight-normal">@Model.CRASH_DATETIME</span></h5>
+    </div>
+</div>
 
-<h1>Crash Details</h1>
-<h2>(<span class="font-italic font-weight-normal">@Model.CRASH_ID</span>)</h2>
-<h1></h1>
+
 <div class="accordion" id="accordionExample">
 
-    <div class="card">
-        <div class="card-header" id="headingOne">
-            <h5 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    General Information
-                </button>
-            </h5>
-        </div>
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-            <div class="card-body">
-
-
-
-            </div>
-        </div>
-    </div>
 
     <div class="card">
         <div class="card-header" id="headingOne">
@@ -36,7 +29,14 @@
         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
             <div class="card-body">
 
+                <div class="row">
+                    <div class="col">
+                        <h6></h6>
+                    </div>
+                    <div class="col">
 
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -56,7 +56,6 @@
 
 
             </div>
-
         </div>
     </div>
 </div>
