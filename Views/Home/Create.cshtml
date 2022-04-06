@@ -78,7 +78,7 @@
                             <div class="form-group col-md-4">
                                 <label asp-for="COUNTY_NAME">County</label>
                                 <select class="form-control" id="inputCounty" asp-for="COUNTY_NAME">
-                                    @*<option></option>*@
+                                    <option></option>
                                     @foreach (var county in ViewBag.counties)
                                     {
                                         <option>@county</option>
