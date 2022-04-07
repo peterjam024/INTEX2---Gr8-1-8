@@ -45,7 +45,14 @@ namespace CrashySmashy.Controllers
         {
             return View();
         }
-        
+
+
+        //returns the privacy Unsubscribe view
+        [HttpGet]
+        public IActionResult PrivacyUnsubscribe()
+        {
+            return View();
+        }
 
 
         //returns the search view
