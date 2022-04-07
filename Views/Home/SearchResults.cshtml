@@ -10,28 +10,19 @@
 @if (signInManager.IsSignedIn(User))
 {
     <div class="d-flex justify-content-between">
-        <div><h1>Accident Reports Admin View</h1></div>
-        <div><a class="btn btn-success" asp-controller="Home" asp-action="Create">Report an accident</a></div>
-
+        <div><h1>Results for Search</h1></div>
     </div>
 }
 else
 {
-    <h1>Accident Reports</h1>
+    <h1>Results for Search</h1>
 }
 
 <br />
-<div class="d-flex justify-content-around">
-    <div class="text-center"><a class="btn btn-outline-primary @(ViewBag.severity == null ? "active" : "")" asp-action="SeeTable" asp-controller="Home">All</a></div>
-    <div class="text-center"><a class="btn btn-outline-primary @(ViewBag.severity == 1 ? "active" : "")" asp-action="SeeTable" asp-controller="Home" asp-route-severity="1">No Injury</a></div>
-    <div class="text-center"><a class="btn btn-outline-primary @(ViewBag.severity == 2 ? "active" : "")" asp-action="SeeTable" asp-controller="Home" asp-route-severity="2">Possible Injury</a></div>
-    <div class="text-center"><a class="btn btn-outline-primary @(ViewBag.severity == 3 ? "active" : "")" asp-action="SeeTable" asp-controller="Home" asp-route-severity="3">Suspected Minor Injury</a></div>
-    <div class="text-center"><a class="btn btn-outline-primary @(ViewBag.severity == 4 ? "active" : "")" asp-action="SeeTable" asp-controller="Home" asp-route-severity="4">Suspected Serious Injury</a></div>
-    <div class="text-center"><a class="btn btn-outline-primary @(ViewBag.severity == 5 ? "active" : "")" asp-action="SeeTable" asp-controller="Home" asp-route-severity="5">Fatal</a></div>
 
-</div>
-<br />
 
+<a asp-action="Search">Search Again</a> |
+<a asp-action="SeeTable">See All Accidents</a>
 
 <table class="table table-bordered table-striped text-center">
     <thead class="font-weight-bold">
@@ -270,36 +261,4 @@ else
 </table>
 
 
-<nav aria-label="Page navigation example">
-    <ul class="pagination">
-        @if (ViewBag.severity == null)
-        {
-            @if (ViewBag.currPage != 1)
-            {
-                <li class="page-item"><a class="page-link" asp-action="SeeTable" asp-controller="Home" asp-route-page="@(ViewBag.currPage - 1)">Previous</a></li>
-            }
-
-            <li class="page-item"><a class="page-link" asp-action="SeeTable" asp-controller="Home" asp-route-page="@(ViewBag.currPage)">@ViewBag.currPage</a></li>
-            <li class="page-item"><a class="page-link" asp-action="SeeTable" asp-controller="Home" asp-route-page="@(ViewBag.currPage + 1)">@(ViewBag.currPage + 1)</a></li>
-            <li class="page-item"><a class="page-link" asp-action="SeeTable" asp-controller="Home" asp-route-page="@(ViewBag.currPage + 2)">@(ViewBag.currPage + 2)</a></li>
-            <li class="page-item"><a class="page-link" asp-action="SeeTable" asp-controller="Home" asp-route-page="@(ViewBag.currPage + 1)">Next</a></li>
-        }
-        else
-        {
-            @if (ViewBag.currPage != 1)
-            {
-                <li class="page-item"><a class="page-link" asp-action="SeeTable" asp-controller="Home" asp-route-page="@(ViewBag.currPage - 1)" asp-route-severity="@ViewBag.severity">Previous</a></li>
-            }
-
-            <li class="page-item"><a class="page-link" asp-action="SeeTable" asp-controller="Home" asp-route-page="@(ViewBag.currPage)" asp-route-severity="@ViewBag.severity">@ViewBag.currPage</a></li>
-            <li class="page-item"><a class="page-link" asp-action="SeeTable" asp-controller="Home" asp-route-page="@(ViewBag.currPage + 1)" asp-route-severity="@ViewBag.severity">@(ViewBag.currPage + 1)</a></li>
-            <li class="page-item"><a class="page-link" asp-action="SeeTable" asp-controller="Home" asp-route-page="@(ViewBag.currPage + 2)" asp-route-severity="@ViewBag.severity">@(ViewBag.currPage + 2)</a></li>
-            <li class="page-item"><a class="page-link" asp-action="SeeTable" asp-controller="Home" asp-route-page="@(ViewBag.currPage + 1)" asp-route-severity="@ViewBag.severity">Next</a></li>
-        }
-
-    </ul>
-</nav>
-
-<a asp-action="Search">Search again</a>
-<a asp-action="Index">Go Home</a>
 

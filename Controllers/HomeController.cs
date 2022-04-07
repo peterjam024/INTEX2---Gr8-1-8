@@ -59,7 +59,8 @@ namespace CrashySmashy.Controllers
         [HttpGet]
         public IActionResult Search()
         {
-            
+            ViewBag.cities = _appContext.Crashes.Where(x => x.CITY != "***  ERROR  ***").Select(x => x.CITY).Distinct().OrderBy(x => x).ToList();
+            ViewBag.counties = _appContext.Crashes.Select(x => x.COUNTY_NAME).Distinct().OrderBy(x => x).ToList();
             return View(new Crash());
         }
 
@@ -72,9 +73,10 @@ namespace CrashySmashy.Controllers
 
             if (!String.IsNullOrEmpty(crash.COUNTY_NAME))
             {
-                search = search.Where(x => x.COUNTY_NAME.Contains(crash.COUNTY_NAME));
+                search = search
+                    .Where(x => x.COUNTY_NAME.Contains(crash.COUNTY_NAME));
             }
-            return View("SearchResults", search.ToList());
+            return View("SearchResults", search.Take(30).ToList());
         }
 
         //returns the search view
