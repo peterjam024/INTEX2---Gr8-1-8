@@ -58,7 +58,8 @@ namespace CrashySmashy
 
 
             //add the dbContext of Identity!
-            services.AddDbContext<AppIdentityDBContext>(options => options.UseMySql(Secrets.GetSecret()));
+/*            services.AddDbContext<AppIdentityDBContext>(options => options.UseMySql(Secrets.GetSecret()));
+*/            services.AddDbContext<AppIdentityDBContext>(options => options.UseMySql(Configuration["ConnectionStrings:IdentityDBConnection"]));
 
 
             //this goes along our datbase above = serves as helping with login stuff
