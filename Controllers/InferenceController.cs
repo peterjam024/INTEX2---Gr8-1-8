@@ -78,7 +78,7 @@ namespace aspnetcore.Controllers
         [HttpGet]
         public IActionResult AnalyticsMaster()
         {
-            return View();
+            return View(new crash_severity_data());
         }
 
         public IActionResult Predictionoutput(Prediction prediction)

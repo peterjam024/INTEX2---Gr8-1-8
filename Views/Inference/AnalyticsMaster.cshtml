@@ -5,7 +5,7 @@
 
 <div class="text-center">
 
-    <h1 class="">Machine Learning COOL</h1>
+    <h1 >Machine Learning COOL</h1>
     <br />
     <h4>Don't yeet your car off the road folks</h4>
     <a asp-controller="Home" asp-action="Index">Go HOME</a> |
@@ -14,17 +14,16 @@
 </div>
 
 @*
-    WE WANT TO DISPLAY THE CRASH SEVERITY PREDICTION HERE (see below)    
+    WE WANT TO DISPLAY THE CRASH SEVERITY PREDICTION HERE   
 *@
-<div>
-    prediction = @ViewBag.prediction
-</div>
 
 
-<h1>Please fill out crash information here</h1>
+<h1>How severe might a crash be if these conditions are involved??</h1>
 
 <div>
     <form method="post" asp-action="Score" asp-controller="Inference">
+
+        <h3>Change conditions here:</h3>
 
         <div asp-validation-summary="All"></div>
 
@@ -61,9 +60,8 @@
                 </div> @*Hour*@
 
                 <div>
-                    <label asp-for="month">Crash Hour of the day</label>
+                    <label asp-for="month">Crash Month</label>
                     <select class="form-control" asp-for="month">
-                        <option></option>
                         <option value="1">January</option>
                         <option value="2">February</option>
                         <option value="3">March</option>
@@ -80,7 +78,7 @@
                 </div> @*Month*@
 
                 <div>
-                    <label asp-for="weekday">Crash Hour of the day</label>
+                    <label asp-for="weekday">Crash Day of the Week</label>
                     <select class="form-control" asp-for="weekday">
                         <option></option>
                         <option value="0">Monday</option>
@@ -119,7 +117,6 @@
                             <label>
                                 City
                                 <select class="form-control" name="City">
-                                    <option></option>
                                     <option value="1">Salt Lake City</option>
                                     <option value="2">West Valley</option>
                                     <option value="3">Other</option>
@@ -129,9 +126,8 @@
 
                         <div>
                             <label>
-                                City
+                                County
                                 <select class="form-control" name="County">
-                                    <option></option>
                                     <option value="1">Salt Lake County</option>
                                     <option value="2">Weber County</option>
                                     <option value="3">Utah County</option>
@@ -144,7 +140,6 @@
                             <label>
                                 Route
                                 <select class="form-control" name="Route">
-                                    <option></option>
                                     <option value="1">Route 89</option>
                                     <option value="2">Other</option>
                                 </select>
@@ -152,55 +147,21 @@
                         </div> @*City*@
 
                         <br />
-                    </div>
 
-                    <div class="col">
-                        <label>County</label>
-                        <div class="form-check">
-                            @Html.RadioButtonFor(model => model.county_name_SALT_LAKE, 1) Salt Lake County
-                        </div>
-                        <div class="form-check">
-                            @Html.RadioButtonFor(model => model.county_name_UTAH, 1) Utah County
-                        </div>
-                        <div class="form-check">
-                            @Html.RadioButtonFor(model => model.county_name_WEBER, 1) Weber County
-                        </div>
-                        <div class="form-check">
-                            @Html.RadioButtonFor(model => model.county_name_Other, 1) Other
-                        </div>
-                        <br />
-                    </div>
-
-                    @*<div class="form-group">
-                        <div class="form-group col-md-4">
-                            <div>
-                                <label asp-for="route_89">Route 89</label>
-                                <input type="number" min="0" max="999999" class="form-control" asp-for="route_89" placeholder="89" />
+                        <div class="form-group">
+                            <div class="form-group col-md-4">
+                                <div>
+                                    <label asp-for="milepoint">Milepoint</label>
+                                    <input type="number" placeholder="E.g., 4.105" step="0.001" min="0.000" max="999.999" class="form-control" asp-for="milepoint" />
+                                </div>
                             </div>
-                        </div>
-                    </div>*@
-                    <div class="col">
-                        <label>Route</label>
-                        <div class="form-check">
-                            @Html.RadioButtonFor(model => model.route_89, 1) Salt Lake County
-                        </div>
-                        <div class="form-check">
-                            @Html.RadioButtonFor(model => model.route_Other, 1) Utah County
-                        </div>
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <div class="form-group col-md-4">
-                            <div>
-                                <label asp-for="milepoint">Milepoint</label>
-                                <input type="number" placeholder="52.975" step="0.001" min="0.000" max="999.999" class="form-control" asp-for="milepoint" />
-                            </div>
-                        </div>
-                    </div> @*milepoint*@
+                        </div> @*milepoint*@
 
+                    </div> @*End Card*@
 
-                </div>
-            </div> @**Inner Accordian: collapseOne*@
+                </div> @**Inner Accordian: collapseOne*@
+
+            </div> @*End card*@
 
 
             <div class="card">
@@ -218,10 +179,10 @@
                             <div class="col">
                                 <label asp-for="work_zone_related_True">In a work zone:</label>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.work_zone_related_True, true) Yes
+                                    @Html.RadioButtonFor(model => model.work_zone_related_True, 1) Yes
                                 </div>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.work_zone_related_True, false) No
+                                    @Html.RadioButtonFor(model => model.work_zone_related_True, 0) No
                                 </div>
                                 <br />
                             </div>
@@ -229,10 +190,10 @@
                             <div class="col">
                                 <label asp-for="pedestrian_involved_True">Pedestrian Involved:</label>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.pedestrian_involved_True, true) Yes
+                                    @Html.RadioButtonFor(model => model.pedestrian_involved_True, 1) Yes
                                 </div>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.pedestrian_involved_True, false) No
+                                    @Html.RadioButtonFor(model => model.pedestrian_involved_True, 0) No
                                 </div>
                                 <br />
                             </div>
@@ -240,10 +201,10 @@
                             <div class="col">
                                 <label asp-for="bicyclist_involved_True">Bicyclist Involved:</label>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.bicyclist_involved_True, true) Yes
+                                    @Html.RadioButtonFor(model => model.bicyclist_involved_True, 1) Yes
                                 </div>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.bicyclist_involved_True, false) No
+                                    @Html.RadioButtonFor(model => model.bicyclist_involved_True, 0) No
                                 </div>
                                 <br />
                             </div>
@@ -254,10 +215,10 @@
                             <div class="col">
                                 <label asp-for="motorcycle_involved_True">Motorcycle Involved:</label>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.motorcycle_involved_True, true) Yes
+                                    @Html.RadioButtonFor(model => model.motorcycle_involved_True, 1) Yes
                                 </div>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.motorcycle_involved_True, false) No
+                                    @Html.RadioButtonFor(model => model.motorcycle_involved_True, 0) No
                                 </div>
                                 <br />
                             </div>
@@ -265,10 +226,10 @@
                             <div class="col">
                                 <label asp-for="commercial_motor_veh_involved_True">Commercial Vehicle Involved:</label>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.commercial_motor_veh_involved_True, true) Yes
+                                    @Html.RadioButtonFor(model => model.commercial_motor_veh_involved_True, 1) Yes
                                 </div>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.commercial_motor_veh_involved_True, false) No
+                                    @Html.RadioButtonFor(model => model.commercial_motor_veh_involved_True, 0) No
                                 </div>
                                 <br />
                             </div>
@@ -276,10 +237,10 @@
                             <div class="col">
                                 <label asp-for="improper_restraint_True">Improper Restraint:</label>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.improper_restraint_True, true) Yes
+                                    @Html.RadioButtonFor(model => model.improper_restraint_True, 1) Yes
                                 </div>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.improper_restraint_True, false) No
+                                    @Html.RadioButtonFor(model => model.improper_restraint_True, 0) No
                                 </div>
                                 <br />
                             </div>
@@ -290,10 +251,10 @@
                             <div class="col">
                                 <label asp-for="unrestrained_True">Unrestrained:</label>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.unrestrained_True, true) Yes
+                                    @Html.RadioButtonFor(model => model.unrestrained_True, 1) Yes
                                 </div>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.unrestrained_True, false) No
+                                    @Html.RadioButtonFor(model => model.unrestrained_True, 0) No
                                 </div>
                                 <br />
                             </div>
@@ -301,10 +262,10 @@
                             <div class="col">
                                 <label asp-for="dui_True">DUI:</label>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.dui_True, true) Yes
+                                    @Html.RadioButtonFor(model => model.dui_True, 1) Yes
                                 </div>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.dui_True, false) No
+                                    @Html.RadioButtonFor(model => model.dui_True, 0) No
                                 </div>
                                 <br />
                             </div>
@@ -312,10 +273,10 @@
                             <div class="col">
                                 <label asp-for="drowsy_driving_True">Drowsy Driving:</label>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.drowsy_driving_True, true) Yes
+                                    @Html.RadioButtonFor(model => model.drowsy_driving_True, 1) Yes
                                 </div>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.drowsy_driving_True, false) No
+                                    @Html.RadioButtonFor(model => model.drowsy_driving_True, 0) No
                                 </div>
                                 <br />
                             </div>
@@ -326,10 +287,10 @@
                             <div class="col">
                                 <label asp-for="intersection_related_True">Intersection:</label>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.intersection_related_True, true) Yes
+                                    @Html.RadioButtonFor(model => model.intersection_related_True, 1) Yes
                                 </div>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.intersection_related_True, false) No
+                                    @Html.RadioButtonFor(model => model.intersection_related_True, 0) No
                                 </div>
                                 <br />
                             </div>
@@ -337,10 +298,10 @@
                             <div class="col">
                                 <label asp-for="wild_animal_related_True">Wild Animal Related:</label>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.wild_animal_related_True, true) Yes
+                                    @Html.RadioButtonFor(model => model.wild_animal_related_True, 1) Yes
                                 </div>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.wild_animal_related_True, false) No
+                                    @Html.RadioButtonFor(model => model.wild_animal_related_True, 0) No
                                 </div>
                                 <br />
                             </div>
@@ -348,10 +309,10 @@
                             <div class="col">
                                 <label asp-for="domestic_animal_related_True">Domestic Animal Related:</label>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.domestic_animal_related_True, true) Yes
+                                    @Html.RadioButtonFor(model => model.domestic_animal_related_True, 1) Yes
                                 </div>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.domestic_animal_related_True, false) No
+                                    @Html.RadioButtonFor(model => model.domestic_animal_related_True, 0) No
                                 </div>
                                 <br />
                             </div>
@@ -362,10 +323,10 @@
                             <div class="col">
                                 <label asp-for="overturn_rollover_True">Vehicle Rollover:</label>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.overturn_rollover_True, true) Yes
+                                    @Html.RadioButtonFor(model => model.overturn_rollover_True, 1) Yes
                                 </div>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.overturn_rollover_True, false) No
+                                    @Html.RadioButtonFor(model => model.overturn_rollover_True, 0) No
                                 </div>
                                 <br />
                             </div>
@@ -373,10 +334,10 @@
                             <div class="col">
                                 <label asp-for="teenage_driver_involved_True">Teenage Driver Involved:</label>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.teenage_driver_involved_True, true) Yes
+                                    @Html.RadioButtonFor(model => model.teenage_driver_involved_True, 1) Yes
                                 </div>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.teenage_driver_involved_True, false) No
+                                    @Html.RadioButtonFor(model => model.teenage_driver_involved_True, 0) No
                                 </div>
                                 <br />
                             </div>
@@ -384,10 +345,10 @@
                             <div class="col">
                                 <label asp-for="older_driver_involved_True">Older Driver Involved:</label>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.older_driver_involved_True, true) Yes
+                                    @Html.RadioButtonFor(model => model.older_driver_involved_True, 1) Yes
                                 </div>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.older_driver_involved_True, false) No
+                                    @Html.RadioButtonFor(model => model.older_driver_involved_True, 0) No
                                 </div>
                                 <br />
                             </div>
@@ -398,10 +359,10 @@
                             <div class="col">
                                 <label asp-for="night_dark_condition_True">Dark Conditions:</label>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.night_dark_condition_True, true) Yes
+                                    @Html.RadioButtonFor(model => model.night_dark_condition_True, 1) Yes
                                 </div>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.night_dark_condition_True, false) No
+                                    @Html.RadioButtonFor(model => model.night_dark_condition_True, 0) No
                                 </div>
                                 <br />
                             </div>
@@ -409,10 +370,10 @@
                             <div class="col">
                                 <label asp-for="single_vehicle_True">Single Vehicle:</label>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.single_vehicle_True, true) Yes
+                                    @Html.RadioButtonFor(model => model.single_vehicle_True, 1) Yes
                                 </div>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.single_vehicle_True, false) No
+                                    @Html.RadioButtonFor(model => model.single_vehicle_True, 0) No
                                 </div>
                                 <br />
                             </div>
@@ -420,10 +381,10 @@
                             <div class="col">
                                 <label asp-for="distracted_driving_True">Distracted Driving:</label>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.distracted_driving_True, true) Yes
+                                    @Html.RadioButtonFor(model => model.distracted_driving_True, 1) Yes
                                 </div>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.distracted_driving_True, false) No
+                                    @Html.RadioButtonFor(model => model.distracted_driving_True, 0) No
                                 </div>
                                 <br />
                             </div>
@@ -435,10 +396,10 @@
                             <div class="col">
                                 <label asp-for="roadway_departure_True">Left the Road:</label>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.roadway_departure_True, true) Yes
+                                    @Html.RadioButtonFor(model => model.roadway_departure_True, 1) Yes
                                 </div>
                                 <div class="form-check">
-                                    @Html.RadioButtonFor(model => model.roadway_departure_True, false) No
+                                    @Html.RadioButtonFor(model => model.roadway_departure_True, 0) No
                                 </div>
                                 <br />
                             </div>
