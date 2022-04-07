@@ -11,9 +11,14 @@ namespace CrashySmashy.Models
     {
         private const string adminUser = "admin";
         private const string adminUser2 = "admin2";
+        private const string adminUser2FA = "admin2FA";
+
 
         private const string adminPassword = "Passw3rd!gr8i8";
         private const string adminPassword2 = "Passw3rd!gr8i8YEET";
+        private const string adminPassword2FA = "Passw3rd!2F@";
+
+
 
 
 
@@ -44,6 +49,9 @@ namespace CrashySmashy.Models
 
             IdentityUser user2 = await userManager.FindByIdAsync(adminUser2);
 
+            IdentityUser user2FA = await userManager.FindByIdAsync(adminUser2FA);
+
+
             //if the above user is null THEN
             if (user == null)
             {
@@ -66,6 +74,17 @@ namespace CrashySmashy.Models
 
                 //creates a new entry in database for this particular user and it uses this password
                 await userManager.CreateAsync(user2, adminPassword2);
+            }
+            if (user2FA == null)
+            {
+                user2FA = new IdentityUser(adminUser2FA);
+
+                user2FA.Email = "admin2FA@secureyeet.com";
+
+                user2FA.PhoneNumber = "555-1235-HEYO";
+
+                //creates a new entry in database for this particular user and it uses this password
+                await userManager.CreateAsync(user2FA, adminPassword2FA);
             }
 
         }
