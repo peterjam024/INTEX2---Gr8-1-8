@@ -196,10 +196,15 @@ figure {
 }
 
 img {
-  vertical-align: middle;
-  border-style: none;
-  height: auto;
-  width: 100%;
+    vertical-align: middle;
+    border-style: none;
+    height: auto;
+    max-width: 100%;
+}
+
+.img-fit {
+    object-fit:cover;
+}
 
 svg {
   overflow: hidden;
