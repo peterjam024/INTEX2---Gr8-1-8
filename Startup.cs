@@ -39,6 +39,12 @@ namespace CrashySmashy
             });
 
             services.AddControllersWithViews();
+            services.AddHsts(options =>
+            {
+                options.Preload = true;
+                options.IncludeSubDomains = true;
+                options.MaxAge = TimeSpan.FromDays(365);
+            });
             services.AddDbContext<CrashesContext>(options =>
             {
                 //options.UseSqlite(Configuration["ConnectionStrings:MyConnection"]);
@@ -46,8 +52,8 @@ namespace CrashySmashy
 
             });
             services.AddSingleton<InferenceSession>(
-            new InferenceSession("Models/crash_severity11.onnx")
-);
+            new InferenceSession("wwwroot/machineLearning/crash_severity11.onnx")
+) ;
 
 
             //add the dbContext of Identity!
@@ -63,8 +69,6 @@ namespace CrashySmashy
 
             services.AddDistributedMemoryCache();
             services.AddSession();
-
-            //services.AddScoped<Basket>(x => SessionBasket.GetBasket(x));
 
 
             //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

@@ -9,47 +9,34 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace CrashySmashy.Controllers
 {
     public class AccountController : Controller
     {
 
 
-        //this is same thing we set up in the Seed data for the login!
-        //attributes A.K.A. Instances!
+        //this is same thing we set up in the Seed data for the login
+        //attributes A.K.A. Instances
         private UserManager<IdentityUser> userManager;
 
         private SignInManager<IdentityUser> signInManager;
 
 
 
-        //Constructor!
-        //gets instances of each of the things and passes in as parameters! 
+        //Constructor
+        //gets instances of each of the things and passes in as parameters
         public AccountController(UserManager<IdentityUser> um, SignInManager<IdentityUser> sim)
         {
             userManager = um;
             signInManager = sim;
         }
 
-
-
-        //// GET: /<controller>/
-        //[HttpGet]
-        //[Authorize]
-        //public IActionResult Admin()
-        //{
-        //    return View();
-        //}
-
-
-
-
-
+        //Get for login
         [HttpGet]
         public IActionResult Login(string? returnUrl = null)
         {
+
+            //if there is a return URL, we will use it, but if not, then we don't need to.
             if (returnUrl is null)
             {
                 return View(new LoginModel());
@@ -62,11 +49,11 @@ namespace CrashySmashy.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginModel loginModel)
         {
-            //get the user associated with the name!
+            //get the user associated with the name
             if (ModelState.IsValid)
             {
 
-                //trying to find the username that has been entered!
+                //trying to find the username that has been entered
                 IdentityUser user = await userManager.FindByNameAsync(loginModel.Username);
 
                 //if we find something... 
@@ -74,10 +61,15 @@ namespace CrashySmashy.Controllers
                 {
                     await signInManager.SignOutAsync();
 
+
                     //try logging in with information!!
                     //this is if it works!!
 
                    
+
+
+                    //try logging in with information
+                    //this is if it works
 
                     if ((await signInManager.PasswordSignInAsync(user, loginModel.Password, false, false)).Succeeded)
                     {
@@ -105,7 +97,7 @@ namespace CrashySmashy.Controllers
         }
 
 
-        //LOGOUT!
+        //LOGOUT
         public async Task<RedirectResult> Logout(string returnUrl = "/")
         {
             await signInManager.SignOutAsync();

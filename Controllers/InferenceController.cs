@@ -10,13 +10,18 @@ namespace aspnetcore.Controllers
 {
     public class InferenceController : Controller
     {
+
+        //Create a new session of type inferencesession
         private InferenceSession _session;
 
+
+        //initialize the session, and assign it to the value of session that we passed in.
         public InferenceController(InferenceSession session)
         {
             _session = session;
         }
 
+        //
         [HttpPost]
         public ActionResult Score(crash_severity_data data)
         {
