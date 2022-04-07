@@ -1,0 +1,64 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@{
+
+    Layout = null;
+
+}
+
+
+
+<!DOCTYPE html>
+
+
+
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+
+    <title>VerifyAuth</title>
+
+</head>
+
+<body>
+
+    <div>
+        <div asp-validation-summary="All"></div>
+
+        <div align="center" style="width:100%">
+
+            <div style="width:300px;"></div>
+
+            <form method="post">
+
+                <img src="~/googleauth.png" />
+
+                <br />
+
+                <div>
+
+                    <img src="@ViewBag.qrcode" />
+
+                </div>
+
+                <br />
+
+                <input style="width:200px;" placeholder="Enter code here..." type="text" name="passcode" />
+
+                <input type="submit" value="Login" class="btn btn-success" />
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

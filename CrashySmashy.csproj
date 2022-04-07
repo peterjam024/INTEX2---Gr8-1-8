@@ -14,6 +14,7 @@
     <None Remove="Models\ViewModels\" />
     <None Remove="Microsoft.EntityFrameworkCore.Design" />
     <None Remove="Microsoft.EntityFrameworkCore.Tools" />
+    <None Remove="GoogleAuthenticator" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AWSSDK.SecretsManager" Version="3.7.2.25" />
@@ -30,6 +31,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="GoogleAuthenticator" Version="2.4.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Account\" />
