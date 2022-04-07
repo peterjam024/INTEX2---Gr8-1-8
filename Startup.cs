@@ -52,7 +52,7 @@ namespace CrashySmashy
 
             });
             services.AddSingleton<InferenceSession>(
-            new InferenceSession("wwwroot/machineLearning/crash_severity11.onnx")
+            new InferenceSession("wwwroot/machineLearning/reg_crash_model.onnx")
 ) ;
 
 

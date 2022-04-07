@@ -30,11 +30,10 @@ namespace aspnetcore.Controllers
                 NamedOnnxValue.CreateFromTensor("float_input", data.AsTensor())
             });
             Tensor<float> score = result.First().AsTensor<float>();
-            var prediction = new Prediction { PredictedValue = score.First() * 100000 };
+            var prediction = new Prediction { PredictedValue = score.First() };
             result.Dispose();
 
-            ViewBag.Prediction = prediction;
-            return RedirectToAction("AnalyticsMaster");
+            return RedirectToAction("Predictionoutput", prediction);
         }
 
         [HttpGet]
@@ -43,9 +42,9 @@ namespace aspnetcore.Controllers
             return View();
         }
 
-        public IActionResult Predictionoutput()
+        public IActionResult Predictionoutput(Prediction prediction)
         {
-            return View();
+            return View(prediction);
         }
 
     }
