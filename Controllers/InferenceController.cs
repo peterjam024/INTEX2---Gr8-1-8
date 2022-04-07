@@ -33,6 +33,7 @@ namespace aspnetcore.Controllers
             Tensor<float> score = result.First().AsTensor<float>();
             var prediction = new Prediction { PredictedValue = score.First() };
             result.Dispose();
+
             return RedirectToAction("Predictionoutput", prediction);
         }
 
