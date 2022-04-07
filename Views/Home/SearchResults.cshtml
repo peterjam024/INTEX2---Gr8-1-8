@@ -1,0 +1,305 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<Crash>
+@inject SignInManager<IdentityUser> signInManager;
+
+
+@if (signInManager.IsSignedIn(User))
+{
+    <div class="d-flex justify-content-between">
+        <div><h1>Accident Reports Admin View</h1></div>
+        <div><a class="btn btn-success" asp-controller="Home" asp-action="Create">Report an accident</a></div>
+
+    </div>
+}
+else
+{
+    <h1>Accident Reports</h1>
+}
+
+<br />
+<div class="d-flex justify-content-around">
+    <div class="text-center"><a class="btn btn-outline-primary @(ViewBag.severity == null ? "active" : "")" asp-action="SeeTable" asp-controller="Home">All</a></div>
+    <div class="text-center"><a class="btn btn-outline-primary @(ViewBag.severity == 1 ? "active" : "")" asp-action="SeeTable" asp-controller="Home" asp-route-severity="1">No Injury</a></div>
+    <div class="text-center"><a class="btn btn-outline-primary @(ViewBag.severity == 2 ? "active" : "")" asp-action="SeeTable" asp-controller="Home" asp-route-severity="2">Possible Injury</a></div>
+    <div class="text-center"><a class="btn btn-outline-primary @(ViewBag.severity == 3 ? "active" : "")" asp-action="SeeTable" asp-controller="Home" asp-route-severity="3">Suspected Minor Injury</a></div>
+    <div class="text-center"><a class="btn btn-outline-primary @(ViewBag.severity == 4 ? "active" : "")" asp-action="SeeTable" asp-controller="Home" asp-route-severity="4">Suspected Serious Injury</a></div>
+    <div class="text-center"><a class="btn btn-outline-primary @(ViewBag.severity == 5 ? "active" : "")" asp-action="SeeTable" asp-controller="Home" asp-route-severity="5">Fatal</a></div>
+
+</div>
+<br />
+
+
+<table class="table table-bordered table-striped text-center">
+    <thead class="font-weight-bold">
+        <tr class="text-center">
+
+            <td>CRASH ID</td>
+            <td>Street Name</td>
+            <td>City</td>
+            <td>County Name</td>
+            <td>Severity</td>
+            <td></td>
+            @*<td>Working Zone</td>
+                <td>Pedestrian Involved</td>
+                <td>Bicyclist Involved</td>
+                <td>Motorcycle Involved</td>
+                <td>Inproper Restraint</td>
+                <td>Unrestrained</td>
+                <td>DUI</td>
+                <td>Intersection Related</td>
+                <td>Wild Animal Related</td>
+                <td>Domestic Animal Related</td>
+                <td>Rollover</td>
+                <td>Commercial Vehicle Involved</td>
+                <td>Teenage Driver Involved</td>
+                <td>Older Driver Involved</td>
+                <td>Dark Conditions</td>
+                <td>Single Vehicle</td>
+                <td>Distracted Driving</td>
+                <td>Drowsy Driving</td>
+                <td>Roadway Departure</td>*@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                @*<td class="text-center">
+                        <form method="get" asp-action="Edit">
+                            <input type="hidden" name="crashid" value="@x.CRASH_ID" />
+                            <button type="submit" class="btn btn-sm btn-warning">Edit</button>
+                        </form>
+                    </td>
+                    <td class="text-center">
+                        <form method="post" asp-action="Delete">
+                            <input type="hidden" name="crashid" value="@x.CRASH_ID" />
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                    </td>*@
+
+                <td>@x.CRASH_ID</td>
+                <td>@x.MAIN_ROAD_NAME</td>
+                <td>@x.CITY</td>
+                <td>@x.COUNTY_NAME</td>
+                @if (x.CRASH_SEVERITY_ID == 1)
+                {
+                    <td>No Injury</td>
+                }
+                @if (x.CRASH_SEVERITY_ID == 2)
+                {
+                    <td>Possible Injury</td>
+                }
+                @if (x.CRASH_SEVERITY_ID == 3)
+                {
+                    <td>Suspected Minor Injury</td>
+                }
+                @if (x.CRASH_SEVERITY_ID == 4)
+                {
+                    <td>Suspected Serious Injury</td>
+                }
+                @if (x.CRASH_SEVERITY_ID == 5)
+                {
+                    <td>Fatal</td>
+                }
+                @*@if (x.CRASH_SEVERITY_ID != 1 && x.CRASH_SEVERITY_ID != 2 && x.CRASH_SEVERITY_ID != 3 && x.CRASH_SEVERITY_ID != 4 && x.CRASH_SEVERITY_ID != 5)
+                    {
+                        <td>nada amigo</td>
+                    }*@
+                <td class="text-center"><a class="btn btn-sm btn-success" asp-controller="Home" asp-action="CrashDetails" asp-route-crashid="@x.CRASH_ID">View Details</a></td>
+                @*@if (x.WORK_ZONE_RELATED == true)
+                    {
+                        <td>Yes</td>
+                    }
+                    else
+                    {
+                        <td>No</td>
+                    }
+                    @if (x.PEDESTRIAN_INVOLVED == true)
+                    {
+                        <td>Yes</td>
+                    }
+                    else
+                    {
+                        <td>No</td>
+                    }
+                    @if (x.BICYCLIST_INVOLVED)
+                    {
+                        <td>Yes</td>
+                    }
+                    else
+                    {
+                        <td>No</td>
+                    }
+                    @if (x.MOTORCYCLE_INVOLVED == true)
+                    {
+                        <td>Yes</td>
+                    }
+                    else
+                    {
+                        <td>No</td>
+                    }
+                    @if (x.IMPROPER_RESTRAINT == true)
+                    {
+                        <td>Yes</td>
+                    }
+                    else
+                    {
+                        <td>No</td>
+                    }
+                    @if (x.UNRESTRAINED == true)
+                    {
+                        <td>Yes</td>
+                    }
+                    else
+                    {
+                        <td>No</td>
+                    }
+                    @if (x.DUI == true)
+                    {
+                        <td>Yes</td>
+                    }
+                    else
+                    {
+                        <td>No</td>
+                    }
+                    @if (x.INTERSECTION_RELATED == true)
+                    {
+                        <td>Yes</td>
+                    }
+                    else
+                    {
+                        <td>No</td>
+                    }
+                    @if (x.WILD_ANIMAL_RELATED == true)
+                    {
+                        <td>Yes</td>
+                    }
+                    else
+                    {
+                        <td>No</td>
+                    }
+                    @if (x.DOMESTIC_ANIMAL_RELATED == true)
+                    {
+                        <td>Yes</td>
+                    }
+                    else
+                    {
+                        <td>No</td>
+                    }
+                    @if (x.OVERTURN_ROLLOVER == true)
+                    {
+                        <td>Yes</td>
+                    }
+                    else
+                    {
+                        <td>No</td>
+                    }
+                    @if (x.COMMERCIAL_MOTOR_VEH_INVOLVED == true)
+                    {
+                        <td>Yes</td>
+                    }
+                    else
+                    {
+                        <td>No</td>
+                    }
+                    @if (x.TEENAGE_DRIVER_INVOLVED == true)
+                    {
+                        <td>Yes</td>
+                    }
+                    else
+                    {
+                        <td>No</td>
+                    }
+                    @if (x.OLDER_DRIVER_INVOLVED == true)
+                    {
+                        <td>Yes</td>
+                    }
+                    else
+                    {
+                        <td>No</td>
+                    }
+                    @if (x.NIGHT_DARK_CONDITION == true)
+                    {
+                        <td>Yes</td>
+                    }
+                    else
+                    {
+                        <td>No</td>
+                    }
+                    @if (x.SINGLE_VEHICLE == true)
+                    {
+                        <td>Yes</td>
+                    }
+                    else
+                    {
+                        <td>No</td>
+                    }
+                    @if (x.DISTRACTED_DRIVING == true)
+                    {
+                        <td>Yes</td>
+                    }
+                    else
+                    {
+                        <td>No</td>
+                    }
+                    @if (x.DROWSY_DRIVING == true)
+                    {
+                        <td>Yes</td>
+                    }
+                    else
+                    {
+                        <td>No</td>
+                    }
+                    @if (x.ROADWAY_DEPARTURE == true)
+                    {
+                        <td>Yes</td>
+                    }
+                    else
+                    {
+                        <td>No</td>
+                    }*@
+
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        @if (ViewBag.severity == null)
+        {
+            @if (ViewBag.currPage != 1)
+            {
+                <li class="page-item"><a class="page-link" asp-action="SeeTable" asp-controller="Home" asp-route-page="@(ViewBag.currPage - 1)">Previous</a></li>
+            }
+
+            <li class="page-item"><a class="page-link" asp-action="SeeTable" asp-controller="Home" asp-route-page="@(ViewBag.currPage)">@ViewBag.currPage</a></li>
+            <li class="page-item"><a class="page-link" asp-action="SeeTable" asp-controller="Home" asp-route-page="@(ViewBag.currPage + 1)">@(ViewBag.currPage + 1)</a></li>
+            <li class="page-item"><a class="page-link" asp-action="SeeTable" asp-controller="Home" asp-route-page="@(ViewBag.currPage + 2)">@(ViewBag.currPage + 2)</a></li>
+            <li class="page-item"><a class="page-link" asp-action="SeeTable" asp-controller="Home" asp-route-page="@(ViewBag.currPage + 1)">Next</a></li>
+        }
+        else
+        {
+            @if (ViewBag.currPage != 1)
+            {
+                <li class="page-item"><a class="page-link" asp-action="SeeTable" asp-controller="Home" asp-route-page="@(ViewBag.currPage - 1)" asp-route-severity="@ViewBag.severity">Previous</a></li>
+            }
+
+            <li class="page-item"><a class="page-link" asp-action="SeeTable" asp-controller="Home" asp-route-page="@(ViewBag.currPage)" asp-route-severity="@ViewBag.severity">@ViewBag.currPage</a></li>
+            <li class="page-item"><a class="page-link" asp-action="SeeTable" asp-controller="Home" asp-route-page="@(ViewBag.currPage + 1)" asp-route-severity="@ViewBag.severity">@(ViewBag.currPage + 1)</a></li>
+            <li class="page-item"><a class="page-link" asp-action="SeeTable" asp-controller="Home" asp-route-page="@(ViewBag.currPage + 2)" asp-route-severity="@ViewBag.severity">@(ViewBag.currPage + 2)</a></li>
+            <li class="page-item"><a class="page-link" asp-action="SeeTable" asp-controller="Home" asp-route-page="@(ViewBag.currPage + 1)" asp-route-severity="@ViewBag.severity">Next</a></li>
+        }
+
+    </ul>
+</nav>
+
+<a asp-action="Search">Search again</a>
+<a asp-action="Index">Go Home</a>
+
