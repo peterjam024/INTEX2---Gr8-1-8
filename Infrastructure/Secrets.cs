@@ -12,10 +12,10 @@ namespace CrashySmashy.Infrastructure
     public static class Secrets
     {
 
-        public static void GetSecret()
+        public static string GetSecret()
         {
-            string secretName = "arn:aws:secretsmanager:us-east-2:553734576566:secret:databaseConnectionStrings-qgAxj8";
-            string region = "us-east-2";
+            string secretName = "crashesDBSecretConnectionString";
+            string region = "us-east-1";
             string secret = "";
 
             MemoryStream memoryStream = new MemoryStream();
@@ -86,7 +86,7 @@ namespace CrashySmashy.Infrastructure
                 string decodedBinarySecret = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(reader.ReadToEnd()));
             }
 
-            // Your code goes here.
+            return secret;
         }
     }
 }
