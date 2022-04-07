@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Analytics Page";
+    ViewData["Title"] = "Analytics";
 }
 @model crash_severity_data
 
@@ -15,25 +15,46 @@
 
 <div>
     <form method="post" asp-action="Score" asp-controller="Inference">
-        all of our cool inputs
-        <!--<label asp-for="milepoint"> MILEPOINT</label> <input asp-for="milepoint"/><br />
-        <label asp-for="lat_">LAT_UTM_Y</label><input asp-for="LAT_UTM_Y" /><br />
-        <label asp-for="LONG_UTM_X">LONG_UTM_X </label><input asp-for="LONG_UTM_X" /><br />
-        <label asp-for="COUNTY_NAME_SALT_Lake">COUNTY_NAME_SALT_Lake</label><input asp-for="COUNTY_NAME_SALT_Lake" /><br />-->
-        @*<label asp-for="CRASH_SEVERITY_ID">CRASH_SEVERITY_ID </label><input asp-for="CRASH_SEVERITY_ID" /><br />*@
-        <!--<label asp-for="INTERSECTION_RELATED_TRUE">INTERSECTION_RELATED_TRUE </label><input asp-for="INTERSECTION_RELATED_TRUE" /><br />
-        <label asp-for="TEENAGE_DRIVER_INVOLVED_TRUE">TEENAGE_DRIVER_INVOLVED_TRUE </label><input asp-for="TEENAGE_DRIVER_INVOLVED_TRUE" /><br />
-        <label asp-for="NIGHT_DARK_CONDITION_TRUE">NIGHT_DARK_CONDITION_TRUE </label><input asp-for="NIGHT_DARK_CONDITION_TRUE" /><br />
-        <label asp-for="SINGLE_VEHICLE_TRUE">SINGLE_VEHICLE_TRUE </label><input asp-for="SINGLE_VEHICLE_TRUE" /><br />
-        <label asp-for="HOUR">HOUR</label><input asp-for="HOUR" /><br />
-        <label asp-for="MONTH">MONTH</label><input asp-for="MONTH" /><br />
-        <label asp-for="WEEKDAY">WEEKDAY</label><input asp-for="WEEKDAY" /><br />-->
+
+        <label asp-for="milepoint"> milepoint</label> <input asp-for="milepoint" /><br />
+        <label asp-for="hour">hour</label><input asp-for="hour" /><br />
+        <label asp-for="month">month </label><input asp-for="month" /><br />
+        <label asp-for="weekday">weekday</label><input asp-for="weekday" /><br />
+        <label asp-for="work_zone_related_True">work_zone_related_True </label><input asp-for="work_zone_related_True" /><br />
+        <label asp-for="pedestrian_involved_True">pedestrian_involved_True </label><input asp-for="pedestrian_involved_True" /><br />
+        <label asp-for="bicyclist_involved_True">bicyclist_involved_True </label><input asp-for="bicyclist_involved_True" /><br />
+        <label asp-for="motorcycle_involved_True">motorcycle_involved_True </label><input asp-for="motorcycle_involved_True" /><br />
+        <label asp-for="improper_restraint_True">improper_restraint_True</label><input asp-for="improper_restraint_True" /><br />
+        <label asp-for="unrestrained_True">unrestrained_True</label><input asp-for="unrestrained_True" /><br />
+        <label asp-for="dui_True">dui_True</label><input asp-for="dui_True" /><br />
+        <label asp-for="intersection_related_True"> intersection_related_True</label> <input asp-for="intersection_related_True" /><br />
+        <label asp-for="wild_animal_related_True">wild_animal_related_True</label><input asp-for="wild_animal_related_True" /><br />
+        <label asp-for="domestic_animal_related_True">domestic_animal_related_True </label><input asp-for="domestic_animal_related_True" /><br />
+        <label asp-for="overturn_rollover_True">overturn_rollover_True</label><input asp-for="overturn_rollover_True" /><br />
+        <label asp-for="commercial_motor_veh_involved_True">commercial_motor_veh_involved_True </label><input asp-for="commercial_motor_veh_involved_True" /><br />
+        <label asp-for="teenage_driver_involved_True">teenage_driver_involved_True </label><input asp-for="teenage_driver_involved_True" /><br />
+        <label asp-for="older_driver_involved_True">older_driver_involved_True </label><input asp-for="older_driver_involved_True" /><br />
+        <label asp-for="night_dark_condition_True">night_dark_condition_True </label><input asp-for="night_dark_condition_True" /><br />
+        <label asp-for="single_vehicle_True">single_vehicle_True</label><input asp-for="single_vehicle_True" /><br />
+        <label asp-for="distracted_driving_True">distracted_driving_True</label><input asp-for="distracted_driving_True" /><br />
+        <label asp-for="drowsy_driving_True">drowsy_driving_True</label><input asp-for="drowsy_driving_True" /><br />
+        <label asp-for="roadway_departure_True"> roadway_departure_True</label> <input asp-for="roadway_departure_True" /><br />
+        <label asp-for="county_name_Other">county_name_Other</label><input asp-for="county_name_Other" /><br />
+        <label asp-for="county_name_SALT_LAKE">county_name_SALT_LAKE </label><input asp-for="county_name_SALT_LAKE" /><br />
+        <label asp-for="county_name_UTAH">county_name_UTAH</label><input asp-for="county_name_UTAH" /><br />
+        <label asp-for="county_name_WEBER">county_name_WEBER </label><input asp-for="county_name_WEBER" /><br />
+        <label asp-for="city_Other">city_Other </label><input asp-for="city_Other" /><br />
+        <label asp-for="city_SALT_LAKE_CITY">city_SALT_LAKE_CITY </label><input asp-for="city_SALT_LAKE_CITY" /><br />
+        <label asp-for="city_WEST_VALLEY_CITY">city_WEST_VALLEY_CITY </label><input asp-for="city_WEST_VALLEY_CITY" /><br />
+        <label asp-for="route_89">route_89</label><input asp-for="route_89" /><br />
+        <label asp-for="route_Other">route_Other</label><input asp-for="route_Other" /><br />
+
         <button type="submit">SUBMIT</button>
     </form>
 </div>
 
 <div>
-    prediction = @ViewBag.Prediction
+    prediction = @ViewBag.prediction
 </div>
 <p>Cool phenomenon 1</p>
 <img src="~/img/carcrash1.jpg" />

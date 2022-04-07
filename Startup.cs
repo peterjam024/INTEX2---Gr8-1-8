@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using CrashySmashy.Infrastructure;
 
 namespace CrashySmashy
 {
@@ -47,9 +48,10 @@ namespace CrashySmashy
             });
             services.AddDbContext<CrashesContext>(options =>
             {
-                //options.UseSqlite(Configuration["ConnectionStrings:MyConnection"]);
+                
+                //options.UseMySql(Configuration["CrashesDBConnectionString"]);
                 options.UseMySql(Configuration["ConnectionStrings:MyConnection"]);
-
+                
             });
             services.AddSingleton<InferenceSession>(
             new InferenceSession("wwwroot/machineLearning/reg_crash_model.onnx")
@@ -57,8 +59,9 @@ namespace CrashySmashy
 
 
             //add the dbContext of Identity!
-            services.AddDbContext<AppIdentityDBContext>(options => options.UseMySql(Configuration["ConnectionStrings:IdentityDBConnection"]));
 
+            //services.AddDbContext<AppIdentityDBContext>(options => options.UseMySql(Configuration["crashesUsersConnectionString"]));
+            services.AddDbContext<AppIdentityDBContext>(options => options.UseMySql(Configuration["ConnectionStrings:IdentityDBConnection"]));
 
             //this goes along our datbase above = serves as helping with login stuff
             services.AddIdentity<IdentityUser, IdentityRole>()
