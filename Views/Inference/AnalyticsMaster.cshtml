@@ -16,10 +16,6 @@
 <div>
     <form method="post" asp-action="Score" asp-controller="Inference">
 
-        <label asp-for="milepoint"> milepoint</label> <input asp-for="milepoint" /><br />
-        <label asp-for="hour">hour</label><input asp-for="hour" /><br />
-        <label asp-for="month">month </label><input asp-for="month" /><br />
-        <label asp-for="weekday">weekday</label><input asp-for="weekday" /><br />
         <label asp-for="work_zone_related_True">work_zone_related_True </label><input asp-for="work_zone_related_True" /><br />
         <label asp-for="pedestrian_involved_True">pedestrian_involved_True </label><input asp-for="pedestrian_involved_True" /><br />
         <label asp-for="bicyclist_involved_True">bicyclist_involved_True </label><input asp-for="bicyclist_involved_True" /><br />
@@ -55,11 +51,427 @@
 <div>
     prediction = @ViewBag.prediction
 </div>
-<p>Cool phenomenon 1</p>
-<img src="~/img/carcrash1.jpg" />
-<p>Cool phenomenon 2</p>
-<img src="~/img/carcrash2.jpg" />
-<p>Cool phenomenon 3</p>
-<img src="~/img/carcrash4.jpg" />
-<p>Cool phenomenon 4</p>
-<img src="~/img/carcrash5.webp" />
+
+
+<h1>Please fill out crash information here</h1>
+
+<div>
+    <form method="post">
+
+        <div asp-validation-summary="All"></div>
+
+        <div class="form-group">
+            <div class="form-group col-md-4">
+                <div>
+                    <label asp-for="hour">Crash Hour of the day</label>
+                    <select class="form-control" asp-for="hour">
+                        <option value="0">12:00 AM</option>
+                        <option value="1">1:00 AM</option>
+                        <option value="2">2:00 AM</option>
+                        <option value="3">3:00 AM</option>
+                        <option value="4">4:00 AM</option>
+                        <option value="5">5:00 AM</option>
+                        <option value="6">6:00 AM</option>
+                        <option value="7">7:00 AM</option>
+                        <option value="8">8:00 AM</option>
+                        <option value="9">9:00 AM</option>
+                        <option value="10">10:00 AM</option>
+                        <option value="11">11:00 AM</option>
+                        <option value="12">12:00 PM</option>
+                        <option value="13">1:00 PM</option>
+                        <option value="14">2:00 PM</option>
+                        <option value="15">3:00 PM</option>
+                        <option value="16">4:00 PM</option>
+                        <option value="17">5:00 PM</option>
+                        <option value="18">6:00 PM</option>
+                        <option value="19">7:00 PM</option>
+                        <option value="20">8:00 PM</option>
+                        <option value="21">9:00 PM</option>
+                        <option value="22">10:00 PM</option>
+                        <option value="23">11:00 PM</option>
+                    </select>
+                </div> @*Hour*@
+
+                <div>
+                    <label asp-for="month">Crash Hour of the day</label>
+                    <select class="form-control" asp-for="month">
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                </div> @*Month*@
+
+                <div>
+                    <label asp-for="weekday">Crash Hour of the day</label>
+                    <select class="form-control" asp-for="weekday">
+                        <option value="0">Monday</option>
+                        <option value="1">Tuesday</option>
+                        <option value="2">Wednesday</option>
+                        <option value="3">Thursday</option>
+                        <option value="4">Friday</option>
+                        <option value="5">Saturday</option>
+                        <option value="6">Sunday</option>
+                    </select>
+                </div> @*Weekday*@
+
+            </div> 
+        </div> @*Form Group for Datetime selections*@
+
+        <br />
+
+        <div class="accordion" id="accordionExample">
+
+
+
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Location Information
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <div class="form-group col-md-4">
+                                <label asp-for="CITY">City</label>
+                                <select class="form-control" id="inputCity" asp-for="CITY">
+                                    <option></option>
+                                    @foreach (var city in ViewBag.cities)
+                                    {
+                                        <option>@city</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-group col-md-4">
+                                <label asp-for="COUNTY_NAME">County</label>
+                                <select class="form-control" id="inputCounty" asp-for="COUNTY_NAME">
+                                    <option></option>
+                                    @foreach (var county in ViewBag.counties)
+                                    {
+                                        <option>@county</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-group col-md-4">
+                                <div>
+                                    <label asp-for="ROUTE">Route</label>
+                                    <input type="number" min="0" max="999999" class="form-control" asp-for="ROUTE" placeholder="89" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-group col-md-4">
+                                <div>
+                                    <label asp-for="milepoint">Milepoint</label>
+                                    <input type="number" placeholder="52.975" step="0.001" min="0.000" max="999.999" class="form-control" asp-for="MILEPOINT" />
+                                </div>
+                            </div>
+                        </div> @*milepoint*@
+
+                        <div class="form-group">
+                            <div class="form-group col-md-4">
+                                <div>
+                                    <label asp-for="LAT_UTM_Y">Latitude</label>
+                                    <input type="number" placeholder="3756489.898" step="0.001" min="0.000" max="9999999.999" class="form-control" asp-for="LAT_UTM_Y" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-group col-md-4">
+                                <div>
+                                    <label asp-for="LONG_UTM_X">Longitude</label>
+                                    <input type="number" placeholder="1234567.987" step="0.001" min="0.000" max="9999999.999" class="form-control" asp-for="LONG_UTM_X" />
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div> @**Inner Accordian: collapseone*@
+
+
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Additional Information
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+                            @*FIRST ROW*@
+                            <div class="row">
+                                <div class="col">
+                                    <label asp-for="WORK_ZONE_RELATED">In a work zone:</label>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.WORK_ZONE_RELATED, true) Yes
+                                    </div>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.WORK_ZONE_RELATED, false) No
+                                    </div>
+                                    <br />
+                                </div>
+
+                                <div class="col">
+                                    <label asp-for="PEDESTRIAN_INVOLVED">Pedestrian Involved:</label>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.PEDESTRIAN_INVOLVED, true) Yes
+                                    </div>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.PEDESTRIAN_INVOLVED, false) No
+                                    </div>
+                                    <br />
+                                </div>
+
+                                <div class="col">
+                                    <label asp-for="BICYCLIST_INVOLVED">Bicyclist Involved:</label>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.BICYCLIST_INVOLVED, true) Yes
+                                    </div>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.BICYCLIST_INVOLVED, false) No
+                                    </div>
+                                    <br />
+                                </div>
+                            </div>
+
+                            @*SECOND ROW*@
+                            <div class="row">
+                                <div class="col">
+                                    <label asp-for="MOTORCYCLE_INVOLVED">Motorcycle Involved:</label>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.MOTORCYCLE_INVOLVED, true) Yes
+                                    </div>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.MOTORCYCLE_INVOLVED, false) No
+                                    </div>
+                                    <br />
+                                </div>
+
+                                <div class="col">
+                                    <label asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED">Commercial Vehicle Involved:</label>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.COMMERCIAL_MOTOR_VEH_INVOLVED, true) Yes
+                                    </div>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.COMMERCIAL_MOTOR_VEH_INVOLVED, false) No
+                                    </div>
+                                    <br />
+                                </div>
+
+                                <div class="col">
+                                    <label asp-for="IMPROPER_RESTRAINT">Improper Restraint:</label>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.IMPROPER_RESTRAINT, true) Yes
+                                    </div>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.IMPROPER_RESTRAINT, false) No
+                                    </div>
+                                    <br />
+                                </div>
+                            </div>
+
+                            @*THIRD ROW*@
+                            <div class="row">
+                                <div class="col">
+                                    <label asp-for="UNRESTRAINED">Unrestrained:</label>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.UNRESTRAINED, true) Yes
+                                    </div>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.UNRESTRAINED, false) No
+                                    </div>
+                                    <br />
+                                </div>
+
+                                <div class="col">
+                                    <label asp-for="DUI">DUI:</label>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.DUI, true) Yes
+                                    </div>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.DUI, false) No
+                                    </div>
+                                    <br />
+                                </div>
+
+                                <div class="col">
+                                    <label asp-for="DROWSY_DRIVING">Drowsy Driving:</label>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.DROWSY_DRIVING, true) Yes
+                                    </div>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.DROWSY_DRIVING, false) No
+                                    </div>
+                                    <br />
+                                </div>
+                            </div>
+
+                            @*FOURTH ROW*@
+                            <div class="row">
+                                <div class="col">
+                                    <label asp-for="INTERSECTION_RELATED">Intersection:</label>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.INTERSECTION_RELATED, true) Yes
+                                    </div>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.INTERSECTION_RELATED, false) No
+                                    </div>
+                                    <br />
+                                </div>
+
+                                <div class="col">
+                                    <label asp-for="WILD_ANIMAL_RELATED">Wild Animal Related:</label>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.WILD_ANIMAL_RELATED, true) Yes
+                                    </div>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.WILD_ANIMAL_RELATED, false) No
+                                    </div>
+                                    <br />
+                                </div>
+
+                                <div class="col">
+                                    <label asp-for="DOMESTIC_ANIMAL_RELATED">Domestic Animal Related:</label>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.DOMESTIC_ANIMAL_RELATED, true) Yes
+                                    </div>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.DOMESTIC_ANIMAL_RELATED, false) No
+                                    </div>
+                                    <br />
+                                </div>
+                            </div>
+
+                            @*FIFTH ROW*@
+                            <div class="row">
+                                <div class="col">
+                                    <label asp-for="OVERTURN_ROLLOVER">Vehicle Rollover:</label>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.OVERTURN_ROLLOVER, true) Yes
+                                    </div>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.OVERTURN_ROLLOVER, false) No
+                                    </div>
+                                    <br />
+                                </div>
+
+                                <div class="col">
+                                    <label asp-for="TEENAGE_DRIVER_INVOLVED">Teenage Driver Involved:</label>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.TEENAGE_DRIVER_INVOLVED, true) Yes
+                                    </div>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.TEENAGE_DRIVER_INVOLVED, false) No
+                                    </div>
+                                    <br />
+                                </div>
+
+                                <div class="col">
+                                    <label asp-for="OLDER_DRIVER_INVOLVED">Older Driver Involved:</label>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.OLDER_DRIVER_INVOLVED, true) Yes
+                                    </div>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.OLDER_DRIVER_INVOLVED, false) No
+                                    </div>
+                                    <br />
+                                </div>
+                            </div>
+
+                            @*SIXTH ROW*@
+                            <div class="row">
+                                <div class="col">
+                                    <label asp-for="NIGHT_DARK_CONDITION">Dark Conditions:</label>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.NIGHT_DARK_CONDITION, true) Yes
+                                    </div>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.NIGHT_DARK_CONDITION, false) No
+                                    </div>
+                                    <br />
+                                </div>
+
+                                <div class="col">
+                                    <label asp-for="SINGLE_VEHICLE">Single Vehicle:</label>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.SINGLE_VEHICLE, true) Yes
+                                    </div>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.SINGLE_VEHICLE, false) No
+                                    </div>
+                                    <br />
+                                </div>
+
+                                <div class="col">
+                                    <label asp-for="DISTRACTED_DRIVING">Distracted Driving:</label>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.DISTRACTED_DRIVING, true) Yes
+                                    </div>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.DISTRACTED_DRIVING, false) No
+                                    </div>
+                                    <br />
+                                </div>
+                            </div>
+
+                            @*SEVENTH ROW*@
+                            <div class="row">
+
+                                <div class="col">
+                                    <label asp-for="ROADWAY_DEPARTURE">Left the Road:</label>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.ROADWAY_DEPARTURE, true) Yes
+                                    </div>
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.ROADWAY_DEPARTURE, false) No
+                                    </div>
+                                    <br />
+                                </div>
+
+                                <div class="col">
+                                    <label>Yeet Master:</label>
+                                    <select>
+                                        <option>YEET</option>
+                                        <option>yes</option>
+                                    </select>
+                                    <br />
+                                </div>
+
+                                <div class="col">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> @*End of Accordian*@
+
+        <br />
+        <button class="btn btn-success" type="submit">Submit</button>
+        <button class="btn btn-dark" asp-action="SeeTable">Cancel</button>
+
+    </form>
+</div>
