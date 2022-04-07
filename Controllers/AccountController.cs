@@ -124,7 +124,7 @@ namespace CrashySmashy.Controllers
             var setupInfo = tfa.GenerateSetupCode("GoogleAuthenticationTest", user, UserUniqueKey, false, 10);
 
 
-            ViewBag.qrcode = setupInfo.QrCodeSetupImageUrl;
+            ViewBag.BarcodeImageUrl = setupInfo.QrCodeSetupImageUrl;
 
             return View();
 
