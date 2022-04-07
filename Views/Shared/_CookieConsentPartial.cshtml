@@ -15,7 +15,11 @@
 {
 
     <div id="cookieConsent" class="alert alert-info alert-dismissible fade show" role="alert">
+
+        This website uses cookies. If you would like to learn more, please click. <a asp-page="/Privacy">Learn More</a>.
+
         By clicking Accept, you are agreeing to our Privacy Policy. <a asp-controller="Home" asp-action="Privacy">Learn More</a>.
+
         <button type="button" class="accept-policy close" data-dismiss="alert" aria-label="Close" data-cookie-string="@cookieString">
             <span aria-hidden="true">Accept</span>
         </button>
