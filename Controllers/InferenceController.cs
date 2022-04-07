@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using CrashySmashy.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -32,7 +33,6 @@ namespace aspnetcore.Controllers
             Tensor<float> score = result.First().AsTensor<float>();
             var prediction = new Prediction { PredictedValue = score.First() };
             result.Dispose();
-
             return RedirectToAction("Predictionoutput", prediction);
         }
 
@@ -44,7 +44,10 @@ namespace aspnetcore.Controllers
 
         public IActionResult Predictionoutput(Prediction prediction)
         {
-            return View(prediction);
+            var prediction2 = prediction.PredictedValue;
+            ViewBag.prediction = Math.Floor(prediction2);
+
+            return View();
         }
 
     }
