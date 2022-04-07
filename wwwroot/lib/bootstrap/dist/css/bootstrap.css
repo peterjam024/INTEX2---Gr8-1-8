@@ -204,7 +204,7 @@ img {
 
 .img-fit {
     /*    object-fit:cover;*/
-    /*    height:auto;*/
+    height:auto;
     max-width: 100%;
 }
 
