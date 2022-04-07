@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CrashySmashy.Models.ViewModels
 {
+    //This is where they get the information to login. The username and password are required, and the return URL is not.
     public class LoginModel
     {
         [Required]
