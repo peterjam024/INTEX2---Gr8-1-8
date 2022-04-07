@@ -13,45 +13,9 @@
 
 </div>
 
-<div>
-    <form method="post" asp-action="Score" asp-controller="Inference">
-
-        @*<label asp-for="work_zone_related_True">work_zone_related_True </label><input asp-for="work_zone_related_True" /><br />
-            <label asp-for="pedestrian_involved_True">pedestrian_involved_True </label><input asp-for="pedestrian_involved_True" /><br />
-            <label asp-for="bicyclist_involved_True">bicyclist_involved_True </label><input asp-for="bicyclist_involved_True" /><br />
-            <label asp-for="motorcycle_involved_True">motorcycle_involved_True </label><input asp-for="motorcycle_involved_True" /><br />
-            <label asp-for="improper_restraint_True">improper_restraint_True</label><input asp-for="improper_restraint_True" /><br />
-            <label asp-for="unrestrained_True">unrestrained_True</label><input asp-for="unrestrained_True" /><br />
-            <label asp-for="dui_True">dui_True</label><input asp-for="dui_True" /><br />
-            <label asp-for="intersection_related_True"> intersection_related_True</label> <input asp-for="intersection_related_True" /><br />
-            <label asp-for="wild_animal_related_True">wild_animal_related_True</label><input asp-for="wild_animal_related_True" /><br />
-            <label asp-for="domestic_animal_related_True">domestic_animal_related_True </label><input asp-for="domestic_animal_related_True" /><br />
-            <label asp-for="overturn_rollover_True">overturn_rollover_True</label><input asp-for="overturn_rollover_True" /><br />
-            <label asp-for="commercial_motor_veh_involved_True">commercial_motor_veh_involved_True </label><input asp-for="commercial_motor_veh_involved_True" /><br />
-            <label asp-for="teenage_driver_involved_True">teenage_driver_involved_True </label><input asp-for="teenage_driver_involved_True" /><br />
-            <label asp-for="older_driver_involved_True">older_driver_involved_True </label><input asp-for="older_driver_involved_True" /><br />
-            <label asp-for="night_dark_condition_True">night_dark_condition_True </label><input asp-for="night_dark_condition_True" /><br />
-            <label asp-for="single_vehicle_True">single_vehicle_True</label><input asp-for="single_vehicle_True" /><br />
-            <label asp-for="distracted_driving_True">distracted_driving_True</label><input asp-for="distracted_driving_True" /><br />
-            <label asp-for="drowsy_driving_True">drowsy_driving_True</label><input asp-for="drowsy_driving_True" /><br />
-            <label asp-for="roadway_departure_True"> roadway_departure_True</label> <input asp-for="roadway_departure_True" /><br />
-        *@
-        @*<label asp-for="county_name_Other">county_name_Other</label><input asp-for="county_name_Other" /><br />
-            <label asp-for="county_name_SALT_LAKE">county_name_SALT_LAKE </label><input asp-for="county_name_SALT_LAKE" /><br />
-            <label asp-for="county_name_UTAH">county_name_UTAH</label><input asp-for="county_name_UTAH" /><br />
-            <label asp-for="county_name_WEBER">county_name_WEBER </label><input asp-for="county_name_WEBER" /><br />
-        *@
-        @*<label asp-for="city_Other">city_Other </label><input asp-for="city_Other" /><br />
-            <label asp-for="city_SALT_LAKE_CITY">city_SALT_LAKE_CITY </label><input asp-for="city_SALT_LAKE_CITY" /><br />
-            <label asp-for="city_WEST_VALLEY_CITY">city_WEST_VALLEY_CITY </label><input asp-for="city_WEST_VALLEY_CITY" /><br />
-        *@
-        <label asp-for="route_89">route_89</label><input asp-for="route_89" /><br />
-        <label asp-for="route_Other">route_Other</label><input asp-for="route_Other" /><br />
-
-        <button type="submit">SUBMIT</button>
-    </form>
-</div>
-
+@*
+    WE WANT TO DISPLAY THE CRASH SEVERITY PREDICTION HERE (see below)    
+*@
 <div>
     prediction = @ViewBag.prediction
 </div>
@@ -99,6 +63,7 @@
                 <div>
                     <label asp-for="month">Crash Hour of the day</label>
                     <select class="form-control" asp-for="month">
+                        <option></option>
                         <option value="1">January</option>
                         <option value="2">February</option>
                         <option value="3">March</option>
@@ -117,6 +82,7 @@
                 <div>
                     <label asp-for="weekday">Crash Hour of the day</label>
                     <select class="form-control" asp-for="weekday">
+                        <option></option>
                         <option value="0">Monday</option>
                         <option value="1">Tuesday</option>
                         <option value="2">Wednesday</option>
@@ -127,17 +93,12 @@
                     </select>
                 </div> @*Weekday*@
 
-                @*<div>
-                    <label>County Attempt</label>
-                    <select name="county_hop" class="form-control">
-                        <option name="county_hop" value="1"></option>
-                    </select>
-                </div>*@
-
             </div>
         </div> @*Form Group for Datetime selections*@
 
         <br />
+
+
 
         <div class="accordion" id="accordionExample">
 
@@ -158,6 +119,7 @@
                             <label>
                                 City
                                 <select class="form-control" name="City">
+                                    <option></option>
                                     <option value="1">Salt Lake City</option>
                                     <option value="2">West Valley</option>
                                     <option value="3">Other</option>
@@ -169,6 +131,7 @@
                             <label>
                                 City
                                 <select class="form-control" name="County">
+                                    <option></option>
                                     <option value="1">Salt Lake County</option>
                                     <option value="2">Weber County</option>
                                     <option value="3">Utah County</option>
@@ -176,6 +139,17 @@
                                 </select>
                             </label>
                         </div> @*County*@
+
+                        <div>
+                            <label>
+                                Route
+                                <select class="form-control" name="Route">
+                                    <option></option>
+                                    <option value="1">Route 89</option>
+                                    <option value="2">Other</option>
+                                </select>
+                            </label>
+                        </div> @*City*@
 
                         <br />
                     </div>

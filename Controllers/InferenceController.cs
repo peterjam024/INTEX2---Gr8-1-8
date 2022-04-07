@@ -32,9 +32,10 @@ namespace aspnetcore.Controllers
 
             decimal city = Convert.ToDecimal(form["City"]);
             decimal county = Convert.ToDecimal(form["County"]);
+            decimal route = Convert.ToDecimal(form["Route"]);
 
 
-
+            // Determine City properties for model based on form
             if (city == 1)
                 data.city_SALT_LAKE_CITY = 1;
             else if (city == 2)
@@ -43,7 +44,7 @@ namespace aspnetcore.Controllers
                 data.city_Other = 1;
 
 
-
+            // Determine County properties for model based on form
             if (county == 1)
                 data.county_name_SALT_LAKE = 1;
             else if (county == 2)
@@ -52,6 +53,13 @@ namespace aspnetcore.Controllers
                 data.county_name_UTAH = 1;
             else
                 data.county_name_Other = 1;
+
+
+            // Determine Route properties for model based on form
+            if (route == 1)
+                data.route_89 = 1;
+            else
+                data.route_Other = 1;
 
 
 
