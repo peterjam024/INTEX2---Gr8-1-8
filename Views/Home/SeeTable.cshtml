@@ -21,11 +21,11 @@ else
 <br />
 <div class="d-flex justify-content-around">
     <div class="text-center"><a class="btn btn-outline-primary @(ViewBag.severity == null ? "active" : "")" asp-action="SeeTable" asp-controller="Home">All</a></div>
-    <div class="text-center"><a class="btn btn-outline-primary @(ViewBag.severity == 1 ? "active" : "")" asp-action="SeeTable" asp-controller="Home" asp-route-severity="1">Severity Level 1</a></div>
-    <div class="text-center"><a class="btn btn-outline-primary @(ViewBag.severity == 2 ? "active" : "")" asp-action="SeeTable" asp-controller="Home" asp-route-severity="2">Severity Level 2</a></div>
-    <div class="text-center"><a class="btn btn-outline-primary @(ViewBag.severity == 3 ? "active" : "")" asp-action="SeeTable" asp-controller="Home" asp-route-severity="3">Severity Level 3</a></div>
-    <div class="text-center"><a class="btn btn-outline-primary @(ViewBag.severity == 4 ? "active" : "")" asp-action="SeeTable" asp-controller="Home" asp-route-severity="4">Severity Level 4</a></div>
-    <div class="text-center"><a class="btn btn-outline-primary @(ViewBag.severity == 5 ? "active" : "")" asp-action="SeeTable" asp-controller="Home" asp-route-severity="5">Severity Level 5</a></div>
+    <div class="text-center"><a class="btn btn-outline-primary @(ViewBag.severity == 1 ? "active" : "")" asp-action="SeeTable" asp-controller="Home" asp-route-severity="1">No Injury</a></div>
+    <div class="text-center"><a class="btn btn-outline-primary @(ViewBag.severity == 2 ? "active" : "")" asp-action="SeeTable" asp-controller="Home" asp-route-severity="2">Possible Injury</a></div>
+    <div class="text-center"><a class="btn btn-outline-primary @(ViewBag.severity == 3 ? "active" : "")" asp-action="SeeTable" asp-controller="Home" asp-route-severity="3">Suspected Minor Injury</a></div>
+    <div class="text-center"><a class="btn btn-outline-primary @(ViewBag.severity == 4 ? "active" : "")" asp-action="SeeTable" asp-controller="Home" asp-route-severity="4">Suspected Serious Injury</a></div>
+    <div class="text-center"><a class="btn btn-outline-primary @(ViewBag.severity == 5 ? "active" : "")" asp-action="SeeTable" asp-controller="Home" asp-route-severity="5">Fatal</a></div>
 
 </div>
 <br />
@@ -101,7 +101,7 @@ else
                 }
                 @if (x.CRASH_SEVERITY_ID == 5)
                 {
-                    <td>Fatal (yeeeeet)</td>
+                    <td>Fatal</td>
                 }
                 @*@if (x.CRASH_SEVERITY_ID != 1 && x.CRASH_SEVERITY_ID != 2 && x.CRASH_SEVERITY_ID != 3 && x.CRASH_SEVERITY_ID != 4 && x.CRASH_SEVERITY_ID != 5)
                     {
