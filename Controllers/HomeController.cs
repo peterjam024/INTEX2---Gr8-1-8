@@ -13,25 +13,42 @@ namespace CrashySmashy.Controllers
 {
     public class HomeController : Controller
     {
+        
+        
         //constructor
+        //creates an _appcontext variable
         private CrashesContext _appContext { get; set; }
+        
+        
+        
+        
+        //initialize the _appcontext, and set it equal to what is passed in.
         public HomeController(CrashesContext crashesContext)
         {
             _appContext = crashesContext;
         }
 
+        
+        //returns the index view
         [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
 
+
+
+
+        //returns the privacy view
         [HttpGet]
         public IActionResult Privacy()
         {
             return View();
         }
+        
 
+
+        //returns the search view
         [HttpGet]
         public IActionResult Search()
         {
@@ -39,7 +56,9 @@ namespace CrashySmashy.Controllers
         }
 
 
-        // GET: /<controller>/
+
+        //This returns the crashes page that shows all of the crashes. To be able to see all of the different pieces, you need to be logged in as an admin,
+        //while the other view does not allow for edit and delete.
         [HttpGet]
         [Authorize]
         public IActionResult Admin(int page = 1, int? severity = null)
@@ -75,7 +94,8 @@ namespace CrashySmashy.Controllers
 
 
 
-
+        //This returns the crashes page that shows all of the crashes. To be able to see all of the different pieces, you need to be logged in as an admin,
+        //while the other view does not allow for edit and delete.
         public IActionResult SeeTable(int page = 1, int? severity = null)
         {
             int pageSize = 10;
@@ -106,6 +126,9 @@ namespace CrashySmashy.Controllers
         }
 
 
+
+
+        //This is where you insert the information to report a new crash. 
         [HttpGet]
         [Authorize]
         public IActionResult Create()
@@ -115,6 +138,10 @@ namespace CrashySmashy.Controllers
             return View(new Crash());
         }
 
+
+
+
+        //This is where you submit the information to report a new crash. It is then stored to the database.
         [HttpPost]
         [Authorize]
         public IActionResult Create(Crash crash)
@@ -130,6 +157,9 @@ namespace CrashySmashy.Controllers
             return View("Create");
         }
 
+
+
+        //This is where you are routed to an edit page where you can edit a file.
         [HttpGet]
         [Authorize]
         public IActionResult Edit(int crashid)
@@ -142,6 +172,9 @@ namespace CrashySmashy.Controllers
         }
 
 
+
+
+        //This is where you can submit the edits, and then resave it to the database.
         [HttpPost]
         [Authorize]
         public IActionResult Edit(Crash crash)
@@ -153,6 +186,8 @@ namespace CrashySmashy.Controllers
         }
 
 
+
+        //This is where you can delete a file from a database, but it only works if you are authorized.
         [Authorize]
         public IActionResult Delete(int crashid)
         {
@@ -162,6 +197,9 @@ namespace CrashySmashy.Controllers
             return RedirectToAction("SeeTable");
         }
 
+
+
+        //This view will return the details of a single crash.
         public IActionResult CrashDetails(int crashid)
         {
             Crash crash = _appContext.Crashes.Single(x => x.CRASH_ID == crashid);
