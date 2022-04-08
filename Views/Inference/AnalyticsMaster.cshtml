@@ -5,11 +5,7 @@
 
 <div class="text-center">
 
-    <h1 >Machine Learning COOL</h1>
-    <br />
-    <h4>Don't yeet your car off the road folks</h4>
-    <a asp-controller="Home" asp-action="Index">Go HOME</a> |
-    <a asp-controller="Home" asp-action="SeeTable">See all the records</a>
+    <h1>How severe might a crash be if the crash happens under these conditions??</h1>
 
 </div>
 
@@ -18,12 +14,10 @@
 *@
 
 
-<h1>How severe might a crash be if these conditions are involved??</h1>
 
 <div>
     <form method="post" asp-action="Score" asp-controller="Inference">
 
-        <h3>Change conditions here:</h3>
 
         <div asp-validation-summary="All"></div>
 
@@ -80,7 +74,6 @@
                 <div>
                     <label asp-for="weekday">Crash Day of the Week</label>
                     <select class="form-control" asp-for="weekday">
-                        <option></option>
                         <option value="0">Monday</option>
                         <option value="1">Tuesday</option>
                         <option value="2">Wednesday</option>
