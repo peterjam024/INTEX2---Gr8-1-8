@@ -123,17 +123,7 @@ namespace CrashySmashy.Controllers
 
             var setupInfo = tfa.GenerateSetupCode("GoogleAuthenticationTest", user, UserUniqueKey, false, 10);
 
-
-            //ViewBag.BarcodeImageUrl = setupInfo.QrCodeSetupImageUrl;
-
             return View();
-
-
-
-
-            //if we don't find something...
-            //ModelState.AddModelError("", "Invalid username or password");
-                //return View("Login", loginModel);
 
         }
 
@@ -146,14 +136,6 @@ namespace CrashySmashy.Controllers
         public IActionResult VerifyAuth(string passcode)
 
         {
-
-            //if (Session["tempid"] == null)
-
-            //{
-
-            //    return RedirectToAction("Admin_Login");
-
-            //}
 
             var token = passcode;
 
