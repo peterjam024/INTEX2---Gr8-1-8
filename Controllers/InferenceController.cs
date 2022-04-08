@@ -80,7 +80,7 @@ namespace aspnetcore.Controllers
             }
             if (data.improper_restraint_True == 1)
             {
-                prediction.PredictedValue = (float)(prediction.PredictedValue * 2);
+                prediction.PredictedValue = (float)(prediction.PredictedValue * 1.5);
             }
 
             data.prediction = prediction.PredictedValue;
