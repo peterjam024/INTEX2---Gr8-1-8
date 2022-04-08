@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = " Index Page";
+    ViewData["Title"] = " Home";
 }
 
 
@@ -8,17 +8,53 @@
     <div class="text-center">
         <h1 class="">The Utah Crash Index</h1>
         <h4>Don't yeet your car off the road folks</h4>
-        <a asp-action="Search">Find specific accident</a> |
-        <a asp-action="SeeTable">View all accidents</a>
+
         <br />
         <div class="row">
-            <img style="background-image" width="900px" height="450px" src="~/img/istockphoto-451333971-170667a.jpg" />
+
+            <img class="col-12" src="~/img/istockphoto-451333971-170667a.jpg" />
+
         </div>
-        <br />        <br />
+        <br />    
 
     </div>
 
+    <hr />
 
+    @*This is the first section of the Index page!*@
+    <div class="row">        
+        <div class="col-6 align-self-center">           
+            <img class="col-12" src="~/img/drivingSigns.jpeg" />
+        </div>
+        <div class="col-6 align-self-center">
+            <h3>Drivers Education</h3>            
+            <p>
+                Education of upcoming drivers is very important. If we can help inform them about the risks of driving and show different yadda. More text
+                can go here later, right now I'm just putting some filler data here. THanks so much to all of our sponsors, yayayayay
+            </p>
+            <br>Subsequent columns continue along the new line.                 
+        </div>
+    </div>
+    <br />       
+
+    <hr />
+
+    <div class="row">
+
+        <div class="col-6 align-self-center">
+            <h3>Accident Reports</h3>
+            <p>Education of upcoming drivers is very important. If we can help inform them about the risks of driving and show different</p>
+
+        </div>
+        <div class="col-6 align-self-center">
+
+            <img class="col-12" src="~/img/drivingSigns.jpeg" />
+
+        </div>
+    </div>
+    <br />       
+
+    <hr />
 
     <div class="row">
         <div class="col-12">
@@ -30,7 +66,8 @@
             .col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.
             .col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.
             .col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.
-            <img style="background-image" width="300px" height="450px" src="~/img/istockphoto-451333971-170667a.jpg" />
+            <br />
+            <img class="col-12" src="~/img/istockphoto-451333971-170667a.jpg" />
 
         </div>
         <div class="col-7">
@@ -43,37 +80,51 @@
             .col-7<br>Subsequent columns continue along the new line.
             .col-7<br>Subsequent columns continue along the new line.
             .col-7<br>Subsequent columns continue along the new line.
-            <img style="background-image" width="300px" height="450px" src="~/img/istockphoto-451333971-170667a.jpg" />
+            <br />
+            <img class="col-12" src="~/img/istockphoto-451333971-170667a.jpg" />
 
         </div>
     </div>
+    <br />      
 
-    <br /><br />
+
+    <hr />
+
+
+
     <div class="row">
         <div class="col-12">
             <h3> Column Heading</h3>
         </div>
-        <div class="col-5">
+        <div class="col-4">
             .col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.
             .col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.
             .col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.
             .col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.
-            .col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.
-            <img style="background-image" width="300px" height="450px" src="~/img/istockphoto-451333971-170667a.jpg" />
+            .col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.<br />
+            <img class="col-12" src="~/img/istockphoto-451333971-170667a.jpg" />
 
         </div>
-        <div class="col-7">
-            .col-7<br>Subsequent columns continue along the new line.
-            .col-7<br>Subsequent columns continue along the new line.
-            .col-7<br>Subsequent columns continue along the new line.
-            .col-7<br>Subsequent columns continue along the new line.
-            .col-7<br>Subsequent columns continue along the new line.
-            .col-7<br>Subsequent columns continue along the new line.
-            .col-7<br>Subsequent columns continue along the new line.
-            .col-7<br>Subsequent columns continue along the new line.
-            .col-7<br>Subsequent columns continue along the new line.
-            <img style="background-image" width="300px" height="450px" src="~/img/istockphoto-451333971-170667a.jpg" />
+        <div class="col-4">
+            .col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.
+            .col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.
+            .col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.
+            .col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.
+            .col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.
+            <br />
+            <img class="col-12" src="~/img/istockphoto-451333971-170667a.jpg" />
+
+        </div>
+        <div class="col-4">
+            .col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.
+            .col-4<br />Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.
+            .col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.
+            .col-4<br />Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.
+            .col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.
+            <br />
+            <img class="col-12" src="~/img/istockphoto-451333971-170667a.jpg" />
 
         </div>
     </div>
+    <br />
 </body>

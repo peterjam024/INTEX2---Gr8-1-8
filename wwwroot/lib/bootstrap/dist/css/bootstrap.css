@@ -196,8 +196,16 @@ figure {
 }
 
 img {
-  vertical-align: middle;
-  border-style: none;
+    vertical-align: middle;
+    border-style: none;
+    height: auto;
+    max-width: 100%;
+}
+
+.img-fit {
+    /*    object-fit:cover;*/
+    height:auto;
+    max-width: 100%;
 }
 
 svg {
