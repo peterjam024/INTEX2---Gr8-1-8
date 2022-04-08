@@ -40,6 +40,7 @@ namespace CrashySmashy.Models
         public float city_WEST_VALLEY_CITY { get; set; } = 0;
         public float route_89 { get; set; } = 0;
         public float route_Other { get; set; } = 0;
+        public float prediction { get; set; } = 0;
 
         public Tensor<float> AsTensor()
         {

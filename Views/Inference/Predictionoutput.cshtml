@@ -1,45 +1,140 @@
 ﻿@{
 }
 
-@if (ViewBag.prediction == 1)
+@model crash_severity_data
+
+
+@if (ViewBag.prediction < 2)
 {
     <h1>We predict that you will have no injury</h1>
+    <div class="row">
+        <img class="col-12" src="~/img/Minor_Accident.webp" />
+    </div>
 }
-else if (ViewBag.prediction == 2)
+else if (ViewBag.prediction < 3)
 {
     <h1>We predict that you will have a possible injury</h1>
-}
-else if (ViewBag.prediction == 3)
+    <div class="row">
+        <img class="col-12" src="~/img/Possible injury.jpg" />
+    </div>}
+else if (ViewBag.prediction < 4)
 {
     <h1>We predict that you will have a minor injury</h1>
-}
-else if (ViewBag.prediction == 4)
+    <div class="row">
+        <img class="col-12" src="~/img/Medium injury.jpeg" />
+
+    </div>}
+else if (ViewBag.prediction < 5)
 {
     <h1>We predict that you will have a severe injury</h1>
-}
+    <div class="row">
+        <img class="col-12" src="~/img/Severe.jpg" />
+
+    </div>}
 else
 {
     <h1>We predict that you will have a fatal injury</h1>
-}
+    <div class="row">
+        <img class="col-12" src="~/img/FATALITY.webp" />
+    </div>}
 
+<h3>These are some of the reasons that your predicted severity is what it is...</h3>
 
-@if (ViewBag.prediction == 1)
-{
-    <img src="~/img/Minor_Accident.webp" />
-}
-else if (ViewBag.prediction == 2)
-{
-    <img src="~/img/Possible injury.jpg" />
-}
-else if (ViewBag.prediction == 3)
-{
-    <img src="~/img/Medium injury.jpeg" />
-}
-else if (ViewBag.prediction == 4)
-{
-    <img src="~/img/Severe.jpg" />
-}
-else
-{
-    <img src="~/img/FATALITY.webp" />
-}
+<ul>
+    <li>Hour: Depending on what time of day you are driving, sometimes there are lots of other people, or crazier people, more drunk people, more sleepy people, etc.</li>
+
+    <li>Month: Depending on what month you are driving in, often the road conditions are not nearly as good. January will be much harder than July because the roads are a lot less clear.</li>
+
+    <li>Weekday: Some days the traffic is much worse than others. This can affect the severity of the crash.</li>
+
+    @if (Model.work_zone_related_True == 1)
+    {
+        <li>Work Zone: If you are in  a work zone, it is dangerous because there are so many extra things going on around you. You will have to be extra vigilant.</li>
+    }
+
+    @if (Model.pedestrian_involved_True == 1)
+    {
+        <li>Pedestrian Involved: Pedestrians don’t have protection! You are in a several ton tank of metal and they are…not. Pedestrians are really vulnerable and hitting them - even bumping them can have major consequences. Be extra watchful in neighborhoods for children wandering out into roads, at intersections for oblivious crossers looking at their phones… Be extra wary in populated areas!</li>
+    }
+
+    @if (Model.bicyclist_involved_True == 1)
+    {
+        <li>Bicyclist Involved: Bicyclists have very little protection. Even clipping a cyclist can end terrifyingly.</li>
+    }
+
+    @if (Model.motorcycle_involved_True == 1)
+    {
+        <li>Motorcycle Involved: Motorcyclists may be zippy, but an accident on a motorcycle can be very severe.</li>
+    }
+
+    @if (Model.improper_restraint_True == 1)
+    {
+        <li>Improper Restraint: If your seatbelt is on wrong, it can break bones and not help protect you as well as it could have.</li>
+    }
+
+    @if (Model.unrestrained_True == 1)
+    {
+        <li>Unrestrained: You will likely fly through your windshield and DIE</li>
+    }
+
+    @if (Model.dui_True == 1)
+    {
+        <li>DUI: Just…don’t. Driving under the influence of drugs (even over the counter drugs like Benadryll)</li>
+    }
+
+    @if (Model.intersection_related_True == 1)
+    {
+        <li>Intersection: Be careful at intersections. If you aren’t careful, then you will be likely to hit an unwary pedestrian that is looking at their phone while crossing the street…</li>
+    }
+
+    @if (Model.wild_animal_related_True == 1)
+    {
+        <li>Wild Animal: Wild animals are unpredictable and could go sprint across the road at whatever moment. Be careful.</li>
+    }
+
+    @if (Model.domestic_animal_related_True == 1)
+    {
+        <li>Domestic Animal: Domestic animals aren’t as often on the road, but people are much more likely to swerve to avoid them. Be careful about them. Watch for them.</li>
+    }
+
+    @if (Model.overturn_rollover_True == 1)
+    {
+        <li>Overturn Rollover: This is bad, because you will go spinning, and be more likely to hit something that you don’t want to have hit.</li>
+    }
+
+    @if (Model.commercial_motor_veh_involved_True == 1)
+    {
+        <li>Commercial Motor Vehicle Involved: This can be dangerous because you get hit by something so much bigger than yourself.</li>
+    }
+
+    @if (Model.teenage_driver_involved_True == 1)
+    {
+        <li>Teenage Driver: Teenage drivers do not have as much experience as full adult drivers. This means you have to be more careful with them so you don’t get hurt.</li>
+    }
+
+    @if (Model.older_driver_involved_True == 1)
+    {
+        <li>Older Driver: These people don’t have as good of reaction time, or neck mobility, and are much more likely to do something they shouldn’t do. Like switch lanes into someone. They are also much more likely to react slowly to unexpected things.</li>
+    }
+
+    @if (Model.night_dark_condition_True == 1)
+    {
+        <li>Night Dark Condition: You can’t see what is going on as well. You are much more likely to hit things that aren’t expected, like animals, or people who are walking across the road not paying attention to their surroundings…</li>
+    }
+
+    @if (Model.distracted_driving_True == 1)
+    {
+        <li>Distracted Driving: You just got a 32 oz of Rootkit Rootbeer from your local gas station to start your day right. You look lovingly at it in the cup holder.. just for a second or two.. And the car in front of you slams on its breaks. You probably could’ve stopped in time, but because you were distracted by your Rootkit Root Beer you missed the critical moment and rear-ended the car in front of you. Don’t get distracted. Even by something as simple as food. Wait to eat that burger. Answer texts when your car is all the way off. Don’t get distracted.</li>
+    }
+
+    @if (Model.drowsy_driving_True == 1)
+    {
+        <li>Drowsy Driving: This is very dangerous, because your reaction time is much lower, and you are much more likely to run into someone or something that you don’t mean to.</li>
+    }
+
+    @if (Model.drowsy_driving_True == 1)
+    {
+        <li>Roadway Departure: It is incredibly dangerous to leave the road because you can run into signs, trees, and it also increases the likelihood of overturns and things.</li>
+    }
+
+</ul>
