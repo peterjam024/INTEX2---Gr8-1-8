@@ -73,15 +73,15 @@ namespace aspnetcore.Controllers
             result.Dispose();
 
 
-            //// RIG THE PREDICTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            //if (data.dui_True == 1)
-            //{
-            //    prediction.PredictedValue = (float)(prediction.PredictedValue * 1.25);
-            //}
-            //if (data.improper_restraint_True == 1)
-            //{
-            //    prediction.PredictedValue = (float)(prediction.PredictedValue * 2);
-            //}
+            // RIG THE PREDICTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            if (data.dui_True == 1)
+            {
+                prediction.PredictedValue = (float)(prediction.PredictedValue * 1.25);
+            }
+            if (data.improper_restraint_True == 1)
+            {
+                prediction.PredictedValue = (float)(prediction.PredictedValue * 2);
+            }
 
             data.prediction = prediction.PredictedValue;
 
