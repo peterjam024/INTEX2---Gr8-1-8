@@ -71,11 +71,148 @@ namespace CrashySmashy.Controllers
             var search = from s in _appContext.Crashes
                          select s;
 
+            //these are all the possible searches that a user could do
             if (!String.IsNullOrEmpty(crash.COUNTY_NAME))
             {
                 search = search
                     .Where(x => x.COUNTY_NAME.Contains(crash.COUNTY_NAME));
             }
+            if (!String.IsNullOrEmpty(crash.CITY))
+            {
+                search = search
+                    .Where(x => x.CITY.Contains(crash.CITY));
+            }
+            if (!String.IsNullOrEmpty(crash.MAIN_ROAD_NAME))
+            {
+                search = search
+                    .Where(x => x.MAIN_ROAD_NAME.Contains(crash.MAIN_ROAD_NAME));
+            }
+            if (!String.IsNullOrEmpty(crash.ROUTE))
+            {
+                search = search
+                    .Where(x => x.ROUTE.Contains(crash.ROUTE));
+            }
+            if (crash.MILEPOINT != null)
+            {
+                search = search
+                    .Where(x => x.MILEPOINT == (crash.MILEPOINT));
+            }
+            if (crash.LAT_UTM_Y != null)
+            {
+                search = search
+                    .Where(x => x.LAT_UTM_Y == (crash.LAT_UTM_Y));
+            }
+            if (crash.LONG_UTM_X != null)
+            {
+                search = search
+                    .Where(x => x.LONG_UTM_X == (crash.LONG_UTM_X));
+            }
+            if (crash.CRASH_SEVERITY_ID != null)
+            {
+                search = search
+                    .Where(x => x.CRASH_SEVERITY_ID == (crash.CRASH_SEVERITY_ID));
+            }
+            if (crash.WORK_ZONE_RELATED)
+            {
+                search = search
+                    .Where(x => x.WORK_ZONE_RELATED == (crash.WORK_ZONE_RELATED));
+            }
+            if (crash.PEDESTRIAN_INVOLVED)
+            {
+                search = search
+                    .Where(x => x.PEDESTRIAN_INVOLVED == (crash.PEDESTRIAN_INVOLVED ));
+            }
+            if (crash.BICYCLIST_INVOLVED)
+            {
+                search = search
+                    .Where(x => x.BICYCLIST_INVOLVED == (crash.BICYCLIST_INVOLVED));
+            }
+            if (crash.MOTORCYCLE_INVOLVED)
+            {
+                search = search
+                    .Where(x => x.MOTORCYCLE_INVOLVED == (crash.MOTORCYCLE_INVOLVED));
+            }
+            if (crash.IMPROPER_RESTRAINT)
+            {
+                search = search
+                    .Where(x => x.IMPROPER_RESTRAINT == (crash.IMPROPER_RESTRAINT));
+            }
+            if (crash.UNRESTRAINED)
+            {
+                search = search
+                    .Where(x => x.UNRESTRAINED == (crash.UNRESTRAINED));
+            }
+            if (crash.DUI)
+            {
+                search = search
+                    .Where(x => x.DUI == (crash.DUI));
+            }
+            if (crash.INTERSECTION_RELATED)
+            {
+                search = search
+                    .Where(x => x.INTERSECTION_RELATED == (crash.INTERSECTION_RELATED));
+            }
+            if (crash.WILD_ANIMAL_RELATED)
+            {
+                search = search
+                    .Where(x => x.WILD_ANIMAL_RELATED == (crash.WILD_ANIMAL_RELATED));
+            }
+            if (crash.DOMESTIC_ANIMAL_RELATED)
+            {
+                search = search
+                    .Where(x => x.DOMESTIC_ANIMAL_RELATED == (crash.DOMESTIC_ANIMAL_RELATED));
+            }
+            if (crash.OVERTURN_ROLLOVER)
+            {
+                search = search
+                    .Where(x => x.OVERTURN_ROLLOVER == (crash.OVERTURN_ROLLOVER));
+            }
+            if (crash.COMMERCIAL_MOTOR_VEH_INVOLVED)
+            {
+                search = search
+                    .Where(x => x.COMMERCIAL_MOTOR_VEH_INVOLVED == (crash.COMMERCIAL_MOTOR_VEH_INVOLVED));
+            }
+            if (crash.TEENAGE_DRIVER_INVOLVED)
+            {
+                search = search
+                    .Where(x => x.TEENAGE_DRIVER_INVOLVED == (crash.TEENAGE_DRIVER_INVOLVED));
+            }
+            if (crash.OLDER_DRIVER_INVOLVED)
+            {
+                search = search
+                    .Where(x => x.OLDER_DRIVER_INVOLVED == (crash.OLDER_DRIVER_INVOLVED));
+            }
+            if (crash.NIGHT_DARK_CONDITION)
+            {
+                search = search
+                    .Where(x => x.NIGHT_DARK_CONDITION == (crash.NIGHT_DARK_CONDITION));
+            }
+            if (crash.SINGLE_VEHICLE)
+            {
+                search = search
+                    .Where(x => x.SINGLE_VEHICLE == (crash.SINGLE_VEHICLE));
+            }
+            if (crash.DISTRACTED_DRIVING)
+            {
+                search = search
+                    .Where(x => x.DISTRACTED_DRIVING == (crash.DISTRACTED_DRIVING));
+            }
+            if (crash.DROWSY_DRIVING)
+            {
+                search = search
+                    .Where(x => x.DROWSY_DRIVING == (crash.DROWSY_DRIVING));
+            }
+            if (crash.ROADWAY_DEPARTURE)
+            {
+                search = search
+                    .Where(x => x.ROADWAY_DEPARTURE == (crash.ROADWAY_DEPARTURE));
+            }
+            if (crash.CRASH_DATETIME != new DateTime(0001, 1, 1, 12, 0, 0))
+            {
+                search = search
+                    .Where(x => x.CRASH_DATETIME == (crash.CRASH_DATETIME));
+            }
+
             return View("SearchResults", search.Take(30).ToList());
         }
 

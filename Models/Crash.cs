@@ -20,7 +20,7 @@ namespace CrashySmashy.Models
         public string MAIN_ROAD_NAME { get; set; }
         public string CITY { get; set; }
         public string COUNTY_NAME { get; set; }
-        public int CRASH_SEVERITY_ID { get; set; }
+        public int? CRASH_SEVERITY_ID { get; set; }
 
         public bool WORK_ZONE_RELATED { get; set; }
         public bool PEDESTRIAN_INVOLVED { get; set; }
