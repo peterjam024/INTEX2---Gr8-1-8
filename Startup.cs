@@ -49,7 +49,7 @@ namespace CrashySmashy
             {
                 
                 options.UseMySql(Configuration["CrashesDBConnectionString"]);
-                //options.UseMySql(Configuration["ConnectionStrings:MyConnection"]);
+                
                 
             });
             services.AddSingleton<InferenceSession>(
@@ -60,7 +60,7 @@ namespace CrashySmashy
             //add the dbContext of Identity!
 
             services.AddDbContext<AppIdentityDBContext>(options => options.UseMySql(Configuration["crashesUsersConnectionString"]));
-            //services.AddDbContext<AppIdentityDBContext>(options => options.UseMySql(Configuration["ConnectionStrings:IdentityDBConnection"]));
+           
 
             //this goes along our datbase above = serves as helping with login stuff
             services.AddIdentity<IdentityUser, IdentityRole>()
