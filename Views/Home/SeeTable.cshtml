@@ -101,10 +101,10 @@ else
                 {
                     <td>Fatal</td>
                 }
-                @*@if (x.CRASH_SEVERITY_ID != 1 && x.CRASH_SEVERITY_ID != 2 && x.CRASH_SEVERITY_ID != 3 && x.CRASH_SEVERITY_ID != 4 && x.CRASH_SEVERITY_ID != 5)
+                @if (x.CRASH_SEVERITY_ID != 1 && x.CRASH_SEVERITY_ID != 2 && x.CRASH_SEVERITY_ID != 3 && x.CRASH_SEVERITY_ID != 4 && x.CRASH_SEVERITY_ID != 5)
                     {
-                        <td>nada amigo</td>
-                    }*@
+                        <td>NA</td>
+                    }
                 <td class="text-center"><a class="btn btn-sm btn-success" asp-controller="Home" asp-action="CrashDetails" asp-route-crashid="@x.CRASH_ID">View Details</a></td>
                 @*@if (x.WORK_ZONE_RELATED == true)
                     {
