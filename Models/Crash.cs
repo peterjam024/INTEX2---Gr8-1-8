@@ -5,6 +5,7 @@ namespace CrashySmashy.Models
 {
     public class Crash
     {
+        //These are the inputs to a database record. It needs everything that doesn't have a question mark on it  
         [Key]
         [Required]
         public int CRASH_ID { get; set; }
