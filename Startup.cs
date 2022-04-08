@@ -115,9 +115,6 @@ namespace CrashySmashy
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-
-            //calling the user at the startup! we want the IApplication BUilder, which we define above as app!
-            IdentitySeedData.EnsurePopulated(app);
         }
     }
 }
