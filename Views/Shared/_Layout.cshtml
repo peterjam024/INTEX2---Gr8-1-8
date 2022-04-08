@@ -15,15 +15,20 @@
         <!-- Sidebar -->
         <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
             <div class="position-sticky">
-                @if (signInManager.IsSignedIn(User))
-                {
+                <div class="ml-5 row align-items-center">
+                    <div class="col-5">
+                        @if (signInManager.IsSignedIn(User))
+                        {
 
-                    <a class="navbar-nav ms-auto d-flex flex-row  list-group-item-action ripple buttonL" href="/account/logout">Logout</a>
-                }
-                else
-                {
-                    <a class="navbar-nav ms-auto d-flex flex-row list-group-item-action ripple buttonL" href="/account/login">Login</a>
-                }
+                            <a class="navbar-nav ms-auto  flex-row  ripple buttonL" href="/account/logout">Logout</a>
+                        }
+                        else
+                        {
+                            <a class="navbar-nav ms-auto  flex-row  ripple buttonL" href="/account/login">Login</a>
+                        }
+                    </div>
+                </div>
+               
                 <div class="list-group list-group-flush mx-3 mt-4">
 
                     <a asp-controller="Home" asp-action="Index"
