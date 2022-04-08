@@ -212,19 +212,19 @@ namespace CrashySmashy.Controllers
             return View("SearchResults", search.Take(30).ToList());
         }
 
-        //returns the search view
-        [HttpGet]
-        public IActionResult SearchResults(string searching)
-        {
-            var search = from s in _appContext.Crashes
-                         select s;
+        ////returns the search view
+        //[HttpGet]
+        //public IActionResult SearchResults(string searching)
+        //{
+        //    var search = from s in _appContext.Crashes
+        //                 select s;
 
-            if (!String.IsNullOrEmpty(searching))
-            {
-                search = search.Where(x => x.COUNTY_NAME.Contains(searching));
-            }
-            return View(search.ToList());
-        }
+        //    if (!String.IsNullOrEmpty(searching))
+        //    {
+        //        search = search.Where(x => x.COUNTY_NAME.Contains(searching));
+        //    }
+        //    return View(search.ToList());
+        //}
 
 
 
