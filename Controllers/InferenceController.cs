@@ -72,6 +72,8 @@ namespace aspnetcore.Controllers
             var prediction = new Prediction { PredictedValue = score.First() };
             result.Dispose();
 
+
+
             return RedirectToAction("Predictionoutput", prediction);
         }
 
@@ -84,7 +86,13 @@ namespace aspnetcore.Controllers
         public IActionResult Predictionoutput(Prediction prediction)
         {
             var prediction2 = prediction.PredictedValue;
+            
             ViewBag.prediction = Math.Floor(prediction2);
+
+            if (ViewBag.prediction >= 5)
+            {
+                ViewBag.prediction = 5;
+            }
 
             return View();
         }

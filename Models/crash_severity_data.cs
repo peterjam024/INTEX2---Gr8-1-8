@@ -55,5 +55,23 @@ namespace CrashySmashy.Models
             return new DenseTensor<float>(data, dimensions);
         }
 
+
+        public float AdjustPrediction(crash_severity_data data , float prediction2)
+        {
+            float pred = prediction2;
+
+            if (data.dui_True == 1)
+            {
+                pred = (float)(pred * 1.25);
+            }
+            if (data.improper_restraint_True == 1)
+            {
+                pred = (float)(pred * 1.5);
+            }
+
+            return pred;
+        }
+
+
     }
 }
