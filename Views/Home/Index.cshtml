@@ -24,15 +24,18 @@
     @*This is the first section of the Index page!*@
     <div class="row">        
         <div class="col-6 align-self-center">           
-            <img class="col-12" src="~/img/drivingSigns.jpeg" />
+            <img class="col-12" src="~/img/carsAbove.jpeg" />
         </div>
         <div class="col-6 align-self-center">
-            <h3>Drivers Education</h3>            
+            <h3>Our Mission</h3>            
             <p>
-                Education of upcoming drivers is very important. If we can help inform them about the risks of driving and show different yadda. More text
-                can go here later, right now I'm just putting some filler data here. THanks so much to all of our sponsors, yayayayay
+                We are extremely dedicated to storing data collected by the Utah Department of Transportation in order to educate drivers. We also use
+                data to make predictions about crash severity based on many different factors such as date, location, and driving conditions.
+                We value data integrity and use our information to make sure that our predictions are accurate and reliable.
             </p>
-            <br>Subsequent columns continue along the new line.                 
+            <br>
+            <p>Learn more by clicking <a href="#ourMission"> here.</a></p>
+            
         </div>
     </div>
     <br />       
@@ -42,13 +45,18 @@
     <div class="row">
 
         <div class="col-6 align-self-center">
-            <h3>Accident Reports</h3>
-            <p>Education of upcoming drivers is very important. If we can help inform them about the risks of driving and show different</p>
+            <h3>Driver Education</h3>
+            <p>
+                Education of upcoming drivers is important. By informing them about the risks of driving, we can help mitigate the devastating effects of fatal crashes.
+                and show different factors. 
 
+            </p>
+            <br />
+            <p>Educate students <a asp-controller="Inference" asp-action="AnalyticsMaster"> here.</a></p>
         </div>
         <div class="col-6 align-self-center">
 
-            <img class="col-12" src="~/img/drivingSigns.jpeg" />
+            <img class="col-12" src="~/img/driverEducation.jpeg" />
 
         </div>
     </div>
@@ -57,7 +65,7 @@
     <hr />
 
     <div class="row">
-        <div class="col-12">
+        <div class="col-12" id="ourMission">
             <h3> Column Heading</h3>
         </div>
         <div class="col-5">
