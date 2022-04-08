@@ -1,7 +1,26 @@
 ﻿@{
 }
 
-<h1>Predicted severity=@ViewBag.prediction</h1>
+@if (ViewBag.prediction == 1)
+{
+    <h1>We predict that you will have no injury</h1>
+}
+else if (ViewBag.prediction == 2)
+{
+    <h1>We predict that you will have a possible injury</h1>
+}
+else if (ViewBag.prediction == 3)
+{
+    <h1>We predict that you will have a minor injury</h1>
+}
+else if (ViewBag.prediction == 4)
+{
+    <h1>We predict that you will have a severe injury</h1>
+}
+else
+{
+    <h1>We predict that you will have a fatal injury</h1>
+}
 
 
 @if (ViewBag.prediction == 1)
@@ -10,17 +29,17 @@
 }
 else if (ViewBag.prediction == 2)
 {
-<img src="~/img/Possible injury.jpg" />
+    <img src="~/img/Possible injury.jpg" />
 }
 else if (ViewBag.prediction == 3)
 {
-<img src="~/img/Medium injury.jpeg" />
+    <img src="~/img/Medium injury.jpeg" />
 }
 else if (ViewBag.prediction == 4)
 {
-<img src="~/img/Severe.jpg" />
+    <img src="~/img/Severe.jpg" />
 }
 else
 {
-<img src="~/img/FATALITY.webp" />
+    <img src="~/img/FATALITY.webp" />
 }
