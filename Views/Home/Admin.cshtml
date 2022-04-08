@@ -1,6 +1,8 @@
 ﻿@using Microsoft.AspNetCore.Authorization
-@attribute [Authorize]
 
+
+@*IF YOU ARE NOT SIGNED IN, YOU CANNOT SEE THIS PAGE*@
+@attribute [Authorize]
 @{
     ViewData["Title"] = "Admin";
 }
@@ -12,6 +14,9 @@
     <div><a class="btn btn-success" asp-controller="Home" asp-action="Create">Report an accident</a></div>
     
 </div>
+
+
+
 
 <br />
 <div class="d-flex justify-content-around">
@@ -37,25 +42,6 @@
             <td>Severity (1-5)</td>
             <td></td>
 
-            @*<td>Working Zone</td>
-        <td>Pedestrian Involved</td>
-        <td>Bicyclist Involved</td>
-        <td>Motorcycle Involved</td>
-        <td>Inproper Restraint</td>
-        <td>Unrestrained</td>
-        <td>DUI</td>
-        <td>Intersection Related</td>
-        <td>Wild Animal Related</td>
-        <td>Domestic Animal Related</td>
-        <td>Rollover</td>
-        <td>Commercial Vehicle Involved</td>
-        <td>Teenage Driver Involved</td>
-        <td>Older Driver Involved</td>
-        <td>Dark Conditions</td>
-        <td>Single Vehicle</td>
-        <td>Distracted Driving</td>
-        <td>Drowsy Driving</td>
-        <td>Roadway Departure</td>*@
         </tr>
     </thead>
     <tbody>
@@ -86,175 +72,9 @@
             {
                 <td>Fatal (yeeeeet)</td>
             }
-            @*@if (x.CRASH_SEVERITY_ID != 1 && x.CRASH_SEVERITY_ID != 2 && x.CRASH_SEVERITY_ID != 3 && x.CRASH_SEVERITY_ID != 4 && x.CRASH_SEVERITY_ID != 5)
-        {
-            <td>nada amigo</td>
-        }*@
+
             <td class="text-center"><a class="btn btn-sm btn-success" asp-controller="Home" asp-action="CrashDetails" asp-route-crashid="@x.CRASH_ID">View Details</a></td>
-            @*<td class="text-center">
-                <form method="get" asp-action="Edit">
-                    <input type="hidden" name="crashid" value="@x.CRASH_ID" />
-                    <button type="submit" class="btn btn-sm btn-warning">Edit</button>
-                </form>
-            </td>
-            <td class="text-center">
-                <form method="post" asp-action="Delete">
-                    <input type="hidden" name="crashid" value="@x.CRASH_ID" />
-                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                </form>
-            </td>*@
-            @*@if (x.WORK_ZONE_RELATED == true)
-        {
-            <td>Yes</td>
-        }
-        else
-        {
-            <td>No</td>
-        }
-        @if (x.PEDESTRIAN_INVOLVED == true)
-        {
-            <td>Yes</td>
-        }
-        else
-        {
-            <td>No</td>
-        }
-        @if (x.BICYCLIST_INVOLVED == true)
-        {
-            <td>Yes</td>
-        }
-        else
-        {
-            <td>No</td>
-        }
-        @if (x.MOTORCYCLE_INVOLVED == true)
-        {
-            <td>Yes</td>
-        }
-        else
-        {
-            <td>No</td>
-        }
-        @if (x.IMPROPER_RESTRAINT == true)
-        {
-            <td>Yes</td>
-        }
-        else
-        {
-            <td>No</td>
-        }
-        @if (x.UNRESTRAINED == true)
-        {
-            <td>Yes</td>
-        }
-        else
-        {
-            <td>No</td>
-        }
-        @if (x.DUI == true)
-        {
-            <td>Yes</td>
-        }
-        else
-        {
-            <td>No</td>
-        }
-        @if (x.INTERSECTION_RELATED == true)
-        {
-            <td>Yes</td>
-        }
-        else
-        {
-            <td>No</td>
-        }
-        @if (x.WILD_ANIMAL_RELATED == true)
-        {
-            <td>Yes</td>
-        }
-        else
-        {
-            <td>No</td>
-        }
-        @if (x.DOMESTIC_ANIMAL_RELATED == true)
-        {
-            <td>Yes</td>
-        }
-        else
-        {
-            <td>No</td>
-        }
-        @if (x.OVERTURN_ROLLOVER == true)
-        {
-            <td>Yes</td>
-        }
-        else
-        {
-            <td>No</td>
-        }
-        @if (x.COMMERCIAL_MOTOR_VEH_INVOLVED == true)
-        {
-            <td>Yes</td>
-        }
-        else
-        {
-            <td>No</td>
-        }
-        @if (x.TEENAGE_DRIVER_INVOLVED == true)
-        {
-            <td>Yes</td>
-        }
-        else
-        {
-            <td>No</td>
-        }
-        @if (x.OLDER_DRIVER_INVOLVED == true)
-        {
-            <td>Yes</td>
-        }
-        else
-        {
-            <td>No</td>
-        }
-        @if (x.NIGHT_DARK_CONDITION == true)
-        {
-            <td>Yes</td>
-        }
-        else
-        {
-            <td>No</td>
-        }
-        @if (x.SINGLE_VEHICLE == true)
-        {
-            <td>Yes</td>
-        }
-        else
-        {
-            <td>No</td>
-        }
-        @if (x.DISTRACTED_DRIVING == true)
-        {
-            <td>Yes</td>
-        }
-        else
-        {
-            <td>No</td>
-        }
-        @if (x.DROWSY_DRIVING == true)
-        {
-            <td>Yes</td>
-        }
-        else
-        {
-            <td>No</td>
-        }
-        @if (x.ROADWAY_DEPARTURE == true)
-        {
-            <td>Yes</td>
-        }
-        else
-        {
-            <td>No</td>
-        }*@
+    
 
         </tr>
 

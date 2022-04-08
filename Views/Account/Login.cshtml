@@ -6,6 +6,7 @@
 
 <html>
 
+@*THIS IS OUR LOGIN PAGE. IT WILL ALLOW SOMEONE TO LOG IN TO THE WEBSITE AND ACCESS CRUD THINGS. IT WILL NOT HAVE ALL FUNCTIONALITY OTHERWISE.*@
 
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -24,12 +25,13 @@
         <div class="text-danger" asp-validation-summary="All"></div>
 
         <form method="post" asp-controller="Account" asp-action="Login">
-
+            @*THIS IS WHERE THEY ENTER THEIR USERNAME*@
             <div class="form-group">
                 <label asp-for="Username">Username:</label>
                 <input asp-for="Username" class="form-control" autofocus/>
             </div>
 
+            @*THIS IS WHERE THEY ENTER THEIR PASSWORD*@
             <div class="form-group">
                 <label asp-for="Password">Password:</label>
                 <input asp-for="Password" class="form-control" type="password" />

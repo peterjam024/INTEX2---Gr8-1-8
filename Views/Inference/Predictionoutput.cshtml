@@ -1,5 +1,26 @@
 ﻿@{
 }
 
-<h1>score=@ViewBag.prediction</h1>
+<h1>Predicted severity=@ViewBag.prediction</h1>
 
+
+@if (ViewBag.prediction == 1)
+{
+    <img src="~/img/Minor_Accident.webp" />
+}
+else if (ViewBag.prediction == 2)
+{
+<img src="~/img/Possible injury.jpg" />
+}
+else if (ViewBag.prediction == 3)
+{
+<img src="~/img/Medium injury.jpeg" />
+}
+else if (ViewBag.prediction == 4)
+{
+<img src="~/img/Severe.jpg" />
+}
+else
+{
+<img src="~/img/FATALITY.webp" />
+}
