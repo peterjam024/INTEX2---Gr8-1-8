@@ -73,18 +73,19 @@ namespace aspnetcore.Controllers
             result.Dispose();
 
 
-            // RIG THE PREDICTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            if (data.dui_True == 1)
-            {
-                prediction.PredictedValue = (float)(prediction.PredictedValue * 1.25);
-            }
-            if (data.improper_restraint_True == 1)
-            {
-                prediction.PredictedValue = (float)(prediction.PredictedValue * 2);
-            }
+            //// RIG THE PREDICTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            //if (data.dui_True == 1)
+            //{
+            //    prediction.PredictedValue = (float)(prediction.PredictedValue * 1.25);
+            //}
+            //if (data.improper_restraint_True == 1)
+            //{
+            //    prediction.PredictedValue = (float)(prediction.PredictedValue * 2);
+            //}
 
+            data.prediction = prediction.PredictedValue;
 
-            return RedirectToAction("Predictionoutput", prediction);
+            return RedirectToAction("Predictionoutput", data);
         }
 
         [HttpGet]
@@ -93,18 +94,24 @@ namespace aspnetcore.Controllers
             return View(new crash_severity_data());
         }
 
-        public IActionResult Predictionoutput(Prediction prediction)
+        public IActionResult Predictionoutput(crash_severity_data data)
         {
-            var prediction2 = prediction.PredictedValue;
-            
+
+            var prediction2 = data.prediction;
+            var data2 = data;
+
             ViewBag.prediction = Math.Floor(prediction2);
 
             if (ViewBag.prediction >= 5)
             {
                 ViewBag.prediction = 5;
             }
+            if (ViewBag.prediction <= 1)
+            {
+                ViewBag.prediction = 1;
+            }
 
-            return View();
+            return View(data2);
         }
 
     }
