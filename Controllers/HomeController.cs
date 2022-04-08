@@ -207,11 +207,7 @@ namespace CrashySmashy.Controllers
                 search = search
                     .Where(x => x.ROADWAY_DEPARTURE == (crash.ROADWAY_DEPARTURE));
             }
-            if (crash.CRASH_DATETIME != new DateTime(0001, 1, 1, 12, 0, 0))
-            {
-                search = search
-                    .Where(x => x.CRASH_DATETIME == (crash.CRASH_DATETIME));
-            }
+           
 
             return View("SearchResults", search.Take(30).ToList());
         }
