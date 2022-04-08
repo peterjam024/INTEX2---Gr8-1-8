@@ -21,8 +21,8 @@ else
 <br />
 
 
-<a asp-action="Search">Search Again</a> |
-<a asp-action="SeeTable">See All Accidents</a>
+<a class="btn btn-outline-primary btn-sm" asp-action="Search">Search Again</a> |
+<a class="btn btn-outline-primary btn-sm"  asp-action="SeeTable">See All Accidents</a>
 <br />
 
 <table class="table table-bordered table-striped text-center">
@@ -35,44 +35,14 @@ else
             <td>County Name</td>
             <td>Severity</td>
             <td></td>
-            @*<td>Working Zone</td>
-                <td>Pedestrian Involved</td>
-                <td>Bicyclist Involved</td>
-                <td>Motorcycle Involved</td>
-                <td>Inproper Restraint</td>
-                <td>Unrestrained</td>
-                <td>DUI</td>
-                <td>Intersection Related</td>
-                <td>Wild Animal Related</td>
-                <td>Domestic Animal Related</td>
-                <td>Rollover</td>
-                <td>Commercial Vehicle Involved</td>
-                <td>Teenage Driver Involved</td>
-                <td>Older Driver Involved</td>
-                <td>Dark Conditions</td>
-                <td>Single Vehicle</td>
-                <td>Distracted Driving</td>
-                <td>Drowsy Driving</td>
-                <td>Roadway Departure</td>*@
+         
         </tr>
     </thead>
     <tbody>
         @foreach (var x in Model)
         {
             <tr>
-                @*<td class="text-center">
-                        <form method="get" asp-action="Edit">
-                            <input type="hidden" name="crashid" value="@x.CRASH_ID" />
-                            <button type="submit" class="btn btn-sm btn-warning">Edit</button>
-                        </form>
-                    </td>
-                    <td class="text-center">
-                        <form method="post" asp-action="Delete">
-                            <input type="hidden" name="crashid" value="@x.CRASH_ID" />
-                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                        </form>
-                    </td>*@
-
+                
                 <td>@x.CRASH_ID</td>
                 <td>@x.MAIN_ROAD_NAME</td>
                 <td>@x.CITY</td>
@@ -97,10 +67,10 @@ else
                 {
                     <td>Fatal</td>
                 }
-                @*@if (x.CRASH_SEVERITY_ID != 1 && x.CRASH_SEVERITY_ID != 2 && x.CRASH_SEVERITY_ID != 3 && x.CRASH_SEVERITY_ID != 4 && x.CRASH_SEVERITY_ID != 5)
+                @if (x.CRASH_SEVERITY_ID != 1 && x.CRASH_SEVERITY_ID != 2 && x.CRASH_SEVERITY_ID != 3 && x.CRASH_SEVERITY_ID != 4 && x.CRASH_SEVERITY_ID != 5)
                     {
                         <td>nada amigo</td>
-                    }*@
+                    }
                 <td class="text-center"><a class="btn btn-sm btn-success" asp-controller="Home" asp-action="CrashDetails" asp-route-crashid="@x.CRASH_ID">View Details</a></td>
                     }
 
